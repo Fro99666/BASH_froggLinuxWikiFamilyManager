@@ -1,17 +1,16 @@
-#mysqlbackup
-newaction "start the prod wiki backup (files & database)" "Backup wikiez files & database"
+#mysqlrollback
+newaction "rollback an older version...current files & data will be overwritten /!\ " "rollback wiki data & files"
 
-#check if backup already exist
-checkBackUp ${CurrFoldWikiBK}
+#read backup folder and list available backups (set $bk)
+rollBackSelection ${FoldWikiBK}
 
-#Backup Mysql Database
-# --------------------
-title "Backup Database" "2"
-mkdir -p "${CurrFoldWikiBK}/"
-mysqldump -u ${msqlUser} -p${msqlPass} ${msqlWikiDb} > "${CurrFoldWikiBK}${msqlWikiDb}.sql"
-good "wiki database backuped to ${CurrFoldWikiBK}${msqlWikiDb}.sql"
+#wikiez
+title "Restore ${bk} files & folder" "2"
+cp -R ${FoldWikiBK}/${bk}/. ${FoldReqWiki}
+good "file restored to ${FoldReqWiki}"
 
-#Backup files
-# ------------------
-title "Backup Files" "2"
-autoBackUp "${FoldReqWiki}" "${CurrFoldWikiBK}"
+#mysql
+title "Restore ${bk} database" "2"
+getMysqlInfo ${FoldWikiBK}/${bk}/${FileReqDbConf/${FoldReqWiki}/}
+mysql -u ${msqlUser} -p${msqlPass} ${msqlWikiDb} < "${FoldWikiBK}/${bk}/${msqlWikiDb}.sql"
+good "database restored"
