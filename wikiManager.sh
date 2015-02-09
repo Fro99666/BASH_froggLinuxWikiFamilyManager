@@ -18,16 +18,19 @@ SCD="Install/Update/BackUp/RollBack WikiFamily project"
                                # script description
 SCT="Debian"                   # script OS Test
 SCC="bash $0"		           # script call
-SCV="0.100"                    # script version
+SCV="0.101"                    # script version
 SCO="2014/11/18"               # script date creation
-SCU="2014/11/27"               # script last modification
+SCU="2015/02/09"               # script last modification
 SCA="Frogg"                    # script author
 SCM="admin@frogg.fr"           # script author Mail
 SCP=$PWD                       # script path
+SCY="2015"                     # script copyrigth year
 # ############################ #
 
-#TODO [1] : Install (with skin/ext management/Conf creator)
-#piwik and pikiwk update + check plugin in
+# TODO [1] : Install (with skin/ext management/Conf creator) + piwik & piwik plugin in
+
+# gestion des passwords
+# collabtive update
 
 #Script Includes
 #---------------
@@ -79,6 +82,7 @@ cleanDir ${inc}
 . ${inc}menu.sh
 #Test if all is ok
 . ${act}test.sh
+
 
 # START SCRIPT
 # ============

@@ -10,7 +10,7 @@ for req in ${requires[*]};do
 	fi
 done
 
-if [ $doUP = 1 -o $doBK = 1 ];then
+if [ $doMYUP = 1 -o $doWIBK = 1 ];then
 	#-- check required/option file/folder/url
 	allCheck=("Fold" "File" "Url")
 	allType=("Req" "Opt")
@@ -57,7 +57,7 @@ echo -e "\n*******************************"
 echo -e "# ${SCN}"
 echo -e "# ${SCD}"
 echo -e "# Tested on   : ${SCT}"
-echo -e "# v${SCV} ${SCU}, Powered By ${SCA} - ${SCM} - Copyright 2014"
+echo -e "# v${SCV} ${SCU}, Powered By ${SCA} - ${SCM} - Copyright ${SCY}"
 echo -e "# script call : ${SCC}"
 echo -e "# Options       :"
 echo -e "# To Install    : ${SCC} -install"

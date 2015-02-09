@@ -8,8 +8,8 @@ checkBackUp ${CurrFoldWikiBK}
 # --------------------
 title "Backup Database" "2"
 mkdir -p "${CurrFoldWikiBK}/"
-mysqldump -u ${msqlUser} -p${msqlPass} ${msqlDb} > "${CurrFoldWikiBK}${msqlDb}.sql"
-good "wiki database backuped to ${CurrFoldWikiBK}${msqlDb}.sql"
+mysqldump -u ${msqlUser} -p${msqlPass} ${msqlWikiDb} > "${CurrFoldWikiBK}${msqlWikiDb}.sql"
+good "wiki database backuped to ${CurrFoldWikiBK}${msqlWikiDb}.sql"
 
 #Backup files
 # ------------------

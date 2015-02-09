@@ -12,5 +12,5 @@ good "file restored to ${FoldReqWiki}"
 #mysql
 title "Restore ${bk} database" "2"
 getMysqlInfo ${FoldWikiBK}/${bk}/${FileReqDbConf/${FoldReqWiki}/}
-mysql -u ${msqlUser} -p${msqlPass} ${msqlDb} < "${FoldWikiBK}/${bk}/${msqlDb}.sql"
+mysql -u ${msqlUser} -p${msqlPass} ${msqlWikiDb} < "${FoldWikiBK}/${bk}/${msqlWikiDb}.sql"
 good "database restored"

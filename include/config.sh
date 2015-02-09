@@ -7,6 +7,12 @@
 #urlOpt...			optional url
 
 #===Const (this part can be changed by user)
+
+#PARAMS Mysql Wiki
+msqlWikiDb="wiki"									#wiki database name
+msqlUser="root"										#mysql user
+msqlPass="xxxx"										#mysql pass
+
 FoldReqOrigin="/opt"								#All App Folder
 
 #main App
