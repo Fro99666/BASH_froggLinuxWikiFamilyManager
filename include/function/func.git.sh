@@ -6,6 +6,7 @@ for skinFold in ${1}*;do
 	if [ ! "${1}${2}" = $skinFold ];then
 		title "$skinFold" "3"
 		cd $skinFold
+		git clean -f
 		git pull
 	fi
 done
