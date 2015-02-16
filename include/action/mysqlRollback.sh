@@ -13,6 +13,6 @@ fi
 
 #mysql
 title "Restore ${bk} database" "2"
-check "root password is required"
-mysql -u root -p < "${FoldMySqlBK}/${bk}/fullDB.sql"
+#check "$msqlUser password is required"
+mysql -u $msqlUser -p$msqlPass < "${FoldMySqlBK}/${bk}/fullDB.sql"
 good "database restored"

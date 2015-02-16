@@ -18,9 +18,9 @@ SCD="Install/Update/BackUp/RollBack WikiFamily project"
                                # script description
 SCT="Debian"                   # script OS Test
 SCC="bash $0"		           # script call
-SCV="0.101"                    # script version
+SCV="0.102"                    # script version
 SCO="2014/11/18"               # script date creation
-SCU="2015/02/09"               # script last modification
+SCU="2015/02/16"               # script last modification
 SCA="Frogg"                    # script author
 SCM="admin@frogg.fr"           # script author Mail
 SCP=$PWD                       # script path
@@ -28,9 +28,7 @@ SCY="2015"                     # script copyrigth year
 # ############################ #
 
 # TODO [1] : Install (with skin/ext management/Conf creator) + piwik & piwik plugin in
-
-# gestion des passwords
-# collabtive update
+# TODO [1] : Finish passwords management + $FoldReqCommon/fr to dynamique !
 
 #Script Includes
 #---------------
@@ -83,7 +81,6 @@ cleanDir ${inc}
 #Test if all is ok
 . ${act}test.sh
 
-
 # START SCRIPT
 # ============
 case 1 in
@@ -106,9 +103,14 @@ $doWIUP)	#Case -update
 . ${act}wikiGit.sh
 . ${act}wikiUpdate.sh
 . ${act}wikiConfig.sh;;
+$doPASS)	#Case -changepass
+. ${act}changePass.sh;;
 esac
 
 # RESULT
 # ======
 title "Script Results" "1"
 good "...Script process is over...Congratz !"
+if [ ! $warnList = "" ];then
+	warn "some task encounter troubles:${warnList}"
+fi

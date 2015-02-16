@@ -1,13 +1,27 @@
 #updateGitFolders {mainFolder} {excludeFolder}
 updateGitFolders()
 {
-for skinFold in ${1}*;do
+for commonFold in ${1}*;do
 	#not for common folder who is a basic wiki folder
-	if [ ! "${1}${2}" = $skinFold ];then
-		title "$skinFold" "3"
-		cd $skinFold
-		git clean -f
-		git pull
+	if [ ! "${1}${2}" = $commonFold ];then
+		title "$commonFold" "3"
+		cd $commonFold
+		#clean uncommitted file/folder
+		git clean -fd
+		#try to pull
+		if git pull &> /dev/null;then
+			good "$commonFold updated" 
+		else
+			#if can't pull, force to remove local changes
+			git fetch --all
+			git reset --hard origin/master
+			if git pull &> /dev/null;then
+				good "$commonFold updated" 
+			else
+				err "error occurred while pulling $commonFold"
+				warnList="${warnList}\n- cannot update $commonFold"
+			fi
+		fi
 	fi
 done
 }
@@ -18,10 +32,10 @@ updateGit()
 {
 exist "d" "${1}"
 if [ $? = 0 ];then
-	check "Cloning git repo"
+	check "Cloning git repository"
 	git clone "${2}" "${1}"
 else
-	check "Updating git repo"
+	check "Updating git repository"
 	cd ${1}
 	git checkout master
 	git pull
@@ -64,6 +78,11 @@ cleanGitFiles()
 {
 #remove file or folder from FileGitDel in $1
 for gitFile in ${FileGitDel[*]};do
-	rm -r "${1}/${gitFile}"
+	if rm -R ${1}/${gitFile}  &> /dev/null;then
+		good "${1}/${gitFile} removed"
+	else
+		err "${1}/${gitFile} not removed"
+		warnList="${warnList}\n- ${1}/${gitFile} not removed"
+	fi
 done
 }

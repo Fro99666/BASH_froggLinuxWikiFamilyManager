@@ -11,12 +11,13 @@ CurrFoldMySqlBK="${FoldMySqlBK}/${DATE}/"		#Fold mysql backup for now
 
 # SCRIPT Menu
 # ===========
-doWIIN=0 #do Install only
-doWIUP=0 #do Update only
-doWIRB=0 #do RollBack only
-doWIBK=0 #do BackUp only
+doWIIN=0 #do Wiki Install only
+doWIUP=0 #do Wiki Update only
+doWIRB=0 #do Wiki RollBack only
+doWIBK=0 #do Wiki BackUp only
 doMYUP=0 #do MysqlUpdate only
-doMYRB=0 #do MysqlUpdate only
+doMYRB=0 #do MysqlRollBack only
+doPASS=0 #do Change Pass only
 for params in $*
 do
 	IFS=: val=($params)
@@ -28,6 +29,7 @@ do
 		"-mysqlupdate")doMYUP=1;break;;
 		"-mysqlbackup")doMYBK=1;break;;
 		"-mysqlrollback")doMYRB=1;break;;
+		"-changepass")doPASS=1;break;;
 	esac
 done
 

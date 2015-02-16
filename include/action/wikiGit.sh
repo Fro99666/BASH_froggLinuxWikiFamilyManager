@@ -12,6 +12,7 @@ title "Install dependencies" "2"
 cd $FoldOptWikiGit
 curl -sS "$UrlReqComposer"| php
 php composer.phar install
+php composer.phar update
 
 #choose a version in git
 cd ${FoldOptWikiGit}

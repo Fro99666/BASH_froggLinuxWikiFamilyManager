@@ -8,8 +8,8 @@ newaction "backup Mysql & phpMyadmin files" "backup MySQL & phpMyAdmin"
 checkBackUp ${CurrFoldMySqlBK}
 #BackUp mySQL
 title "backup full MySQL databases" "2"
-check "root password is required"
-mysqldump -u root -p --all-databases > "${CurrFoldMySqlBK}fullDB.sql"
+#check "$msqlUser password is required"
+mysqldump -u $msqlUser -p$msqlPass --all-databases > "${CurrFoldMySqlBK}fullDB.sql"
 good "full database backuped to ${CurrFoldMySqlBK}fullDB.sql"
 
 #BackUp phpMyAdmin

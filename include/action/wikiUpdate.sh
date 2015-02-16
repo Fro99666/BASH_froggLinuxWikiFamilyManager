@@ -62,4 +62,3 @@ for lang in ${FoldReqWiki}*;do
 	fi
 
 done
-

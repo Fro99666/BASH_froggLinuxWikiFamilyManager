@@ -40,14 +40,22 @@ if [ $doMYUP = 1 -o $doWIBK = 1 ];then
 			done
 		done
 	done
-	#-- check & get mysql conf
+	#-- check & get wiki mysql conf
 	exist "f" "$FileReqDbConf"
 	if [ $? = 1 ];then
 		#get database infos
 		getMysqlInfo ${FileReqDbConf}
 		#then test database type
 		if [ ! $msqlType = "mysql" ];then
-			err "mediawiki database is ${msqlType} and this script require mysql database";((errFound++))
+			err "mediawiki database is ${msqlType} and this script require mysql database";((errFound++))		
+		fi
+		#mysql wiki database infos
+		msqlWikiDb=$msqlDb			#wiki database name
+		msqlWikiDbUsr=$msqlUser		#wiki database user name
+		msqlWikiDbPss=$msqlPass		#wiki database pass
+	else
+		if [ $doWIBK = 1 ];then
+			err "mediawiki database file infos ${FileReqDbConf} not found";((errFound++))
 		fi
 	fi
 fi
@@ -56,16 +64,19 @@ fi
 echo -e "\n*******************************"
 echo -e "# ${SCN}"
 echo -e "# ${SCD}"
-echo -e "# Tested on   : ${SCT}"
 echo -e "# v${SCV} ${SCU}, Powered By ${SCA} - ${SCM} - Copyright ${SCY}"
-echo -e "# script call : ${SCC}"
-echo -e "# Options       :"
-echo -e "# To Install    : ${SCC} -install"
-echo -e "# To Update     : ${SCC} -update (will do a backup before)"
-echo -e "# To Rollback   : ${SCC} -rollback"
-echo -e "# To Back Up    : ${SCC} -backup"
-echo -e "# MySql update  : ${SCC} -mysqlupdate (will do a backup before)"
-echo -e "# MySql Rollback: ${SCC} -mysqlrollback"
+echo -e "# Tested on       : ${SCT}"
+echo -e "# script call     : ${SCC}"
+echo -e "# Wiki's Options  :"
+echo -e "# To Install      : ${SCC} -install"
+echo -e "# To Update       : ${SCC} -update (will do a backup before)"
+echo -e "# To Rollback     : ${SCC} -rollback"
+echo -e "# To Back Up      : ${SCC} -backup"
+echo -e "# MySql's Options :"
+echo -e "# MySql update    : ${SCC} -mysqlupdate (will do a backup before)"
+echo -e "# MySql Rollback  : ${SCC} -mysqlrollback"
+echo -e "# Linux Options   :"
+echo -e "# Change Passwords: ${SCC} -changepass"
 if [ $errFound -gt 0 ]; then
 	err  "Errors has been found, script cannot continue..."
 	echo "please solve errors before restart the script"
