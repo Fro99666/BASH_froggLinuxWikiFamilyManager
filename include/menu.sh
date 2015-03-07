@@ -30,6 +30,7 @@ do
 		"-mysqlbackup")doMYBK=1;break;;
 		"-mysqlrollback")doMYRB=1;break;;
 		"-changepass")doPASS=1;break;;
+		*)doWIBK=1;break;;
 	esac
 done
 
