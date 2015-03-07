@@ -35,7 +35,7 @@ done
 
 #default case
 if [ -z $* ];then
-	doWIBK=1
+	doWIUP=1
 fi
 
 #reformat folder vars
