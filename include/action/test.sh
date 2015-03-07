@@ -10,7 +10,7 @@ for req in ${requires[*]};do
 	fi
 done
 
-if [ $doMYUP = 1 -o $doWIBK = 1 ];then
+if [ $doMYUP = 1 -o $doWIBK = 1 -o $doWIUP = 1 ];then
 	#-- check required/option file/folder/url
 	allCheck=("Fold" "File" "Url")
 	allType=("Req" "Opt")
