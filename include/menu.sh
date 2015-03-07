@@ -29,10 +29,14 @@ do
 		"-mysqlupdate")doMYUP=1;break;;
 		"-mysqlbackup")doMYBK=1;break;;
 		"-mysqlrollback")doMYRB=1;break;;
-		"-changepass")doPASS=1;break;;
-		*)doWIBK=1;break;;
+		"-changepass")doPASS=1;break;
 	esac
 done
+
+#default case
+if [ -z $* ];then
+	doWIBK=1
+fi
 
 #reformat folder vars
 FoldReqOrigin=$(addSlashToFold "$FoldReqOrigin")
