@@ -1,6 +1,11 @@
 #mysqlupdate
 newaction "start the prod wiki update (files & database)" "Update all wikiez files & database"
 
+# update maintenance folder
+# -------------------------
+title "Update maintenance files" "1"
+cp -r  "${FoldOptWikiGit}/maintenance/" ${FoldReqCommon}
+
 # update extensions & Skins
 # -------------------------
 makeachoice "update skins & extensions (optional)"
