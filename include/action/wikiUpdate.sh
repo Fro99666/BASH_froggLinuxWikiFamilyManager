@@ -3,8 +3,9 @@ newaction "start the prod wiki update (files & database)" "Update all wikiez fil
 
 # update maintenance folder
 # -------------------------
-title "Update maintenance files" "1"
+title "Update maintenance & includes files" "1"
 cp -r  "${FoldOptWikiGit}/maintenance/" ${FoldReqCommon}
+cp -r  "${FoldOptWikiGit}/includes/" ${FoldReqCommon}
 
 # update extensions & Skins
 # -------------------------
