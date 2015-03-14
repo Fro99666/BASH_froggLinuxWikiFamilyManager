@@ -3,10 +3,11 @@ newaction "start the prod wiki update (files & database)" "Update all wikiez fil
 
 # update maintenance folder
 # -------------------------
-title "Update maintenance,includes,languages files" "1"
+title "Update maintenance,includes,languages,vendor folders" "1"
 cp -r  "${FoldOptWikiGit}/maintenance/" ${FoldReqCommon}
 cp -r  "${FoldOptWikiGit}/includes/" ${FoldReqCommon}
 cp -r  "${FoldOptWikiGit}/languages/" ${FoldReqCommon}
+cp -r  "${FoldOptWikiGit}/vendor/" ${FoldReqCommon}
 cp "${FoldOptWikiGit}/autoload.php" ${FoldReqCommon}
 
 # update extensions & Skins
