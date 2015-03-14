@@ -8,7 +8,10 @@ cp -r  "${FoldOptWikiGit}/maintenance/" ${FoldReqCommon}
 cp -r  "${FoldOptWikiGit}/includes/" ${FoldReqCommon}
 cp -r  "${FoldOptWikiGit}/languages/" ${FoldReqCommon}
 cp -r  "${FoldOptWikiGit}/vendor/" ${FoldReqCommon}
+
+title "Update common files" "1"
 cp "${FoldOptWikiGit}/autoload.php" ${FoldReqCommon}
+cp "${FoldOptWikiGit}/composer.lock" ${FoldReqCommon}
 
 # update extensions & Skins
 # -------------------------
