@@ -68,7 +68,7 @@ for lang in ${FoldReqWiki}*;do
 		# update database
 		# ---------------
 		title "Database update" "3"
-		php "${lang}/maintenance/update.php --conf ${lang}/LocalSettings.php"
+		php ${lang}/maintenance/update.php --conf ${lang}/LocalSettings.php
 		good "${lang} database has been updated"
 
 	fi
