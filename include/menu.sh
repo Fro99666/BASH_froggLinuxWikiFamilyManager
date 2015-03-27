@@ -35,9 +35,10 @@ do
 	esac
 done
 
-#default case
+#default case update auto
 if [ -z $* ];then
 	doWIUP=1
+	doAUTO=1
 fi
 
 #reformat folder vars
