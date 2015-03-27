@@ -2,6 +2,8 @@
 # makeachoice {forThisQuestion}
 makeachoice()
 {
+if [ $doAUTO = 1 ];then return 1
+
 userChoice=0
 echo " "	#add a pre space to have a better display
 while true; do
