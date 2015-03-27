@@ -2,7 +2,9 @@
 # makeachoice {forThisQuestion}
 makeachoice()
 {
-if [ $doAUTO = 1 ];then return 1
+if [ $doAUTO = 1 ];then 
+	return 1
+fi
 
 userChoice=0
 echo " "	#add a pre space to have a better display
