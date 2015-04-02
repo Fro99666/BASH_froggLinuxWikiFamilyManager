@@ -1,4 +1,11 @@
-getMysqlInfo()
+#MYSQL
+changeMysqlUserPass()
+{
+echo $(mysql -u${3} -p${4} -e "SET PASSWORD FOR '$1'@'localhost' = PASSWORD('$2');")
+}
+
+#WIKI
+getWikiMysqlInfo()
 {
 tmpCat=$(cat ${1})
 msqlType=`echo "$tmpCat" | grep "wgDBtype" | cut -d \" -f 2`
@@ -8,12 +15,45 @@ msqlPass=`echo "$tmpCat" | grep "wgDBpassword" | cut -d \" -f 2`
 tmpCat=""
 }
 
-changeMysqlUserPass()
-{
-mysql -e "SET PASSWORD FOR '$1'@'localhost' = PASSWORD('$2');" -u $msqlUser -p$msqlPass
-}
-
 getMysqlWikiUserName()
 {
-echo mysql -e "SELECT user_name FROM 'pool_user' where user_id=1;" -u $msqlUser -p$msqlPass
+cmdRes=$(mysql -u$msqlUser -p$msqlPass -e "SELECT user_name FROM ${msqlDb}.${shareDbPrefix}user where user_id=1;")
+echo ${cmdRes//user_name} | tr -d '\n'
+}
+
+#COLLABTIVE
+getCollabtiveMysqlInfo()
+{
+tmpCat=$(cat ${1})
+msqlCollabtiveDb=`echo "$tmpCat" | grep "db_name" | cut -d \' -f 2`
+msqlCollabtiveUser=`echo "$tmpCat" | grep "db_user" | cut -d \' -f 2`
+msqlCollabtivePass=`echo "$tmpCat" | grep "db_pass" | cut -d \' -f 2`
+tmpCat=""
+}
+
+getMysqlCollabtiveUserName()
+{
+cmdRes=$(mysql -u$msqlCollabtiveUser -p$msqlCollabtivePass -e "SELECT name FROM ${msqlCollabtiveDb}.user where id=1;")
+echo ${cmdRes//name} | tr -d '\n'
+}
+
+updateMysqlCollabtiveUserName()
+{
+echo $(mysql -u$msqlCollabtiveUser -p$msqlCollabtivePass -e "UPDATE ${msqlCollabtiveDb}.user SET pass='${2}' where name='${1}'")
+}
+
+#PIWIK
+getPiwikMysqlInfo()
+{
+tmpCat=$(cat ${1})
+msqlPiwikUser=`echo "$tmpCat" | grep "username" | cut -d \" -f 2`
+msqlPiwikPass=`echo "$tmpCat" | grep "password" | cut -d \" -f 2`
+msqlPiwikDB=`echo "$tmpCat" | grep "dbname" | cut -d \" -f 2`
+msqlPiwikTable=`echo "$tmpCat" | grep "tables_prefix" | cut -d \" -f 2`
+tmpCat=""
+}
+
+updateMysqlPiwikUserName()
+{
+echo $(mysql -u$msqlPiwikUser -p$msqlPiwikPass -e "UPDATE ${msqlPiwikDB}.${msqlPiwikTable}user SET password = '${2}', token_auth = '${2}' WHERE login = '${1}'")
 }

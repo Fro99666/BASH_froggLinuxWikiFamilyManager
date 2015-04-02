@@ -18,9 +18,9 @@ SCD="Install/Update/BackUp/RollBack WikiFamily project"
                                # script description
 SCT="Debian"                   # script OS Test
 SCC="bash $0"		           # script call
-SCV="0.102"                    # script version
+SCV="0.103"                    # script version
 SCO="2014/11/18"               # script date creation
-SCU="2015/02/16"               # script last modification
+SCU="2015/04/02"               # script last modification
 SCA="Frogg"                    # script author
 SCM="admin@frogg.fr"           # script author Mail
 SCP=$PWD                       # script path
@@ -28,7 +28,7 @@ SCY="2015"                     # script copyrigth year
 # ############################ #
 
 # TODO [1] : Install (with skin/ext management/Conf creator) + piwik & piwik plugin in
-# TODO [1] : Finish passwords management + $FoldReqCommon/fr to dynamique !
+# TODO [1] : TEST ==> passwords management + $FoldReqCommon/fr to dynamique !
 
 #Script Includes
 #---------------
@@ -97,7 +97,12 @@ $doWIRB)	#Case -rollback
 . ${act}wikiRollback.sh
 . ${act}wikiConfig.sh;;
 $doWIIN)	#Case -install
-echo "TODO:@WORK !!";;
+. $(act)wikiInfo.sh
+. ${act}mysqlBackup.sh
+. ${act}wikiGit.sh
+#TODO EXTENSION FILES
+. ${act}wikiUpdate.sh
+. ${act}wikiConfig.sh;;
 $doWIUP)	#Case -update
 . ${act}wikiBackup.sh
 . ${act}wikiGit.sh

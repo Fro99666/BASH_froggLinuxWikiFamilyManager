@@ -1,4 +1,4 @@
-#mysqlbackup
+#update wiki git folder
 newaction "update mediawiki GIT in ${FoldOptWikiGit}" "Update/Install mediawiki GIT core"
 
 # Get or Update core wiki

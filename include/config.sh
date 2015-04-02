@@ -32,8 +32,15 @@ UrlReqMyAdmin="https://github.com/phpmyadmin/phpmyadmin.git"			#phpmyadmin git f
 #wiki stuff
 FoldReqCommon="/opt/web/wiki/common"					#wiki folder with common stuff in main folder (images,extensions,skins,maintenances,includes,...) -IMPORTANT :  without / at end
 FileReqDbConf="/opt/web/wiki/common/config_common.php"	#file where database infos are stored
+shareDbPrefix="fr_"										#database shared in wiki 
 
 #Linux Stuff
 linuxRootUsr="root"									#Linux root user
 linuxWebUsr="www-data:www-data"						#Linux web user
 requires=("curl" "git" "php" "mysql") 				#list of required stuff installed
+
+#Bonus Stuff
+# * Collabtive
+FoldConfCollabtive="/opt/web/collabtive/config/standard/config.php"
+# * Piwik
+FoldConfPiwik="/opt/web/piwik/config/config.ini.php"

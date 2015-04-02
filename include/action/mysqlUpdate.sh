@@ -1,5 +1,5 @@
 #mysqlupdate
-newaction "start Mysql & phpMyadmin update" "update MySQL & phpMyAdmin"
+newaction "start Mysql & phpMyadmin install/update" "update MySQL & install/phpMyAdmin"
 
 #Install/update mySQL
 title "update MySQL" "2"

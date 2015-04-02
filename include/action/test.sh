@@ -10,7 +10,7 @@ for req in ${requires[*]};do
 	fi
 done
 
-if [ $doMYUP = 1 -o $doWIBK = 1 -o $doWIUP = 1 ];then
+if [ $doMYUP = 1 -o $doWIBK = 1 -o $doWIUP = 1 -o $doPASS = 1 ];then
 	#-- check required/option file/folder/url
 	allCheck=("Fold" "File" "Url")
 	allType=("Req" "Opt")
@@ -44,7 +44,7 @@ if [ $doMYUP = 1 -o $doWIBK = 1 -o $doWIUP = 1 ];then
 	exist "f" "$FileReqDbConf"
 	if [ $? = 1 ];then
 		#get database infos
-		getMysqlInfo ${FileReqDbConf}
+		getWikiMysqlInfo ${FileReqDbConf}
 		#then test database type
 		if [ ! $msqlType = "mysql" ];then
 			err "mediawiki database is ${msqlType} and this script require mysql database";((errFound++))		
