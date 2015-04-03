@@ -4,7 +4,7 @@ newaction "update mediawiki GIT in ${FoldOptWikiGit}" "Update/Install mediawiki 
 # Get or Update core wiki
 # -----------------------
 title "Get or Update GIT" "2"
-updateGit ${FoldOptWikiGit} ${UrlReqWikiGit}
+updateGit "${FoldOptWikiGit}" "${UrlReqWikiGit}"
 
 # Install dependencies
 # ---------------------
@@ -15,5 +15,4 @@ php composer.phar install
 php composer.phar update
 
 #choose a version in git
-cd ${FoldOptWikiGit}
-chooseGitVersion
+chooseGitVersion ${FoldOptWikiGit}

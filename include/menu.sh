@@ -35,14 +35,13 @@ do
 	esac
 done
 
-#default case update auto
-if [ -z $* ];then
-	doWIUP=1
-	doAUTO=1
-fi
+#default case update auto (use by me but optionnal)
+#if [ -z $* ];then
+#	doWIUP=1
+#	doAUTO=1
+#fi
 
 #reformat folder vars
-FoldReqOrigin=$(addSlashToFold "$FoldReqOrigin")
 FoldReqCommon=$(addSlashToFold "$FoldReqCommon")
 FoldReqBackup=$(addSlashToFold "$FoldReqBackup")
 FoldReqWiki=$(addSlashToFold "$FoldReqWiki")

@@ -30,11 +30,11 @@ done
 #updateGit {destinationFolder} {repoUrl}
 updateGit()
 {
-exist "d" "${1}"
+exist "d" "${1}/.git"
 if [ $? = 0 ];then
 	check "Cloning git repository"
 	git clone "${2}" "${1}"
-else
+else	
 	check "Updating git repository"
 	cd ${1}
 	git checkout master
@@ -61,12 +61,12 @@ if [ $? = 0 ];then
 		[ $? = 0 ] && err "${ver} not found in version list" || break
 	done
 	#check out the selected branch
-	cd ${FoldOptWikiGit}
+	cd ${1}
 	git checkout -b REL${ver}
 	good "${ver} branch has been selected"
 else
 	#use master branch
-	cd ${FoldOptWikiGit}
+	cd ${1}
 	git checkout master
 	good "master branch has been selected"
 fi

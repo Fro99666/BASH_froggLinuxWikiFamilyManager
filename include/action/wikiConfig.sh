@@ -7,7 +7,8 @@ title "Folder Rights" "2"
 chown "$linuxWebUsr" ${FoldReqWiki} -R
 [ -f ${FoldReqWiki}${msqlDb}.sql ] && rm ${FoldReqWiki}${msqlDb}.sql
 #Prevent > Warning: Your default directory for uploads /opt/wiki/{...}/images/ is vulnerable to arbitrary scripts execution.
-chmod 750 ${FoldReqCommon}images/* -R
+mkdir -p ${FoldReqCommon}/images/
+chmod 750 ${FoldReqCommon}/images/* -R
 good "${FoldReqWiki} Rights updated"
 #php extensions
 title "PHP Extensions" "2"

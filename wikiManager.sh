@@ -18,7 +18,7 @@ SCD="Install/Update/BackUp/RollBack WikiFamily project"
                                # script description
 SCT="Debian"                   # script OS Test
 SCC="bash $0"		           # script call
-SCV="0.103"                    # script version
+SCV="0.104"                    # script version
 SCO="2014/11/18"               # script date creation
 SCU="2015/04/02"               # script last modification
 SCA="Frogg"                    # script author
@@ -27,8 +27,8 @@ SCP=$PWD                       # script path
 SCY="2015"                     # script copyrigth year
 # ############################ #
 
-# TODO [1] : Install (with skin/ext management/Conf creator) + piwik & piwik plugin in
-# TODO [1] : TEST ==> passwords management + $FoldReqCommon/fr to dynamique !
+# TODO [1] : Compress Backup
+# TODO [1] : Save phpmyadmin config
 
 #Script Includes
 #---------------
@@ -97,10 +97,9 @@ $doWIRB)	#Case -rollback
 . ${act}wikiRollback.sh
 . ${act}wikiConfig.sh;;
 $doWIIN)	#Case -install
-. $(act)wikiInfo.sh
-. ${act}mysqlBackup.sh
+. ${act}wikiInfo.sh
+. ${act}mysqlUpdate.sh
 . ${act}wikiGit.sh
-#TODO EXTENSION FILES
 . ${act}wikiUpdate.sh
 . ${act}wikiConfig.sh;;
 $doWIUP)	#Case -update
@@ -118,4 +117,19 @@ title "Script Results" "1"
 good "...Script process is over...Congratz !"
 if [ ! $warnList = "" ];then
 	warn "some task encounter troubles:${warnList}"
+fi
+
+#Only for install case !
+if [ $doWIIN = 1 ];then
+	#si file not exist
+	touch $FileReqDbConf
+	good ""
+	good "You need to set a link in you web configuration to ${lang}"
+	good "for example (easy way):" 
+	good "ln -s /var/www/{lang} {pathToWikiLang}"
+	good ""
+	good "to finish the install display Wikimedia installed web site in your browser"
+	good "once done, modify $FileReqDbConf to add wiki database config and add a link to this file into your LocalSetting.php of each languages installed "
+	good ""
+	good "for more infos got to http://en.wiki.frogg.fr or http://wiki.frogg.fr"
 fi
