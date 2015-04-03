@@ -2,6 +2,7 @@
 z=0												#title lvl 1
 y=0												#title lvl 2
 x=0												#title lvl 3
+warnList=""										#list of warn in script
 errFound=0										#tests error count
 FoldWikiBK=${FoldReqBackup}/${FoldReqWiki##*/}	#Fold wiki for backup
 FoldMySqlBK="${FoldReqBackup}/mysql" 			#Fold mysql for backup
