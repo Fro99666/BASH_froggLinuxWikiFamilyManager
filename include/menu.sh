@@ -36,10 +36,10 @@ do
 done
 
 #default case update auto (use by me but optionnal)
-#if [ -z $* ];then
-#	doWIUP=1
-#	doAUTO=1
-#fi
+if [ -z $* ];then
+	doWIUP=1
+	doAUTO=1
+fi
 
 #reformat folder vars
 FoldReqCommon=$(addSlashToFold "$FoldReqCommon")
