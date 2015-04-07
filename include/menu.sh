@@ -16,6 +16,7 @@ doWIIN=0 #do Wiki Install only
 doWIUP=0 #do Wiki Update only
 doWIRB=0 #do Wiki RollBack only
 doWIBK=0 #do Wiki BackUp only
+doSMAP=0 #do Wiki sitemap
 doMYUP=0 #do MysqlUpdate only
 doMYRB=0 #do MysqlRollBack only
 doPASS=0 #do Change Pass only
@@ -32,6 +33,7 @@ do
 		"-mysqlbackup")doMYBK=1;break;;
 		"-mysqlrollback")doMYRB=1;break;;
 		"-changepass")doPASS=1;break;;
+		"-sitemap")doSMAP=1;break;;
 		"-confirm")doAUTO=1;break;;
 	esac
 done
@@ -46,7 +48,6 @@ fi
 if [ $doPASS = 1 ]; then
  doAUTO=0
 fi
-
 
 #reformat folder vars
 FoldReqCommon=$(addSlashToFold "$FoldReqCommon")

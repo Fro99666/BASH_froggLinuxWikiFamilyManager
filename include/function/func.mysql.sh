@@ -17,6 +17,9 @@ tmpCat=""
 
 getMysqlWikiUserName()
 {
+#get wiki web folder
+tmpCat=$(cat ${FileReqDbConf})
+shareDbPrefix=`echo "$tmpCat" | grep "shareDbPrefix" | cut -d \" -f 2`
 cmdRes=$(mysql -u$msqlUser -p$msqlPass -e "SELECT user_name FROM ${msqlDb}.${shareDbPrefix}user where user_id=1;")
 echo ${cmdRes//user_name} | tr -d '\n'
 }

@@ -18,9 +18,9 @@ SCD="Install/Update/BackUp/RollBack WikiFamily project"
                                # script description
 SCT="Debian"                   # script OS Test
 SCC="bash $0"		           # script call
-SCV="0.104"                    # script version
+SCV="0.105"                    # script version
 SCO="2014/11/18"               # script date creation
-SCU="2015/04/02"               # script last modification
+SCU="2015/04/07"               # script last modification
 SCA="Frogg"                    # script author
 SCM="admin@frogg.fr"           # script author Mail
 SCP=$PWD                       # script path
@@ -106,9 +106,12 @@ $doWIUP)	#Case -update
 . ${act}wikiBackup.sh
 . ${act}wikiGit.sh
 . ${act}wikiUpdate.sh
-. ${act}wikiConfig.sh;;
+. ${act}wikiConfig.sh
+. ${act}wikiSiteMap.sh;;
 $doPASS)	#Case -changepass
 . ${act}changePass.sh;;
+$doSMAP)	#Case -sitemap
+. ${act}wikiSiteMap.sh;;
 esac
 
 # RESULT

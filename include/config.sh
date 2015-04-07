@@ -38,7 +38,7 @@ UrlReqMyAdminGit="https://github.com/phpmyadmin/phpmyadmin.git"			#phpmyadmin gi
 #wiki stuff
 FoldReqCommon="${FoldReqWiki}/common"					#wiki folder with common stuff in main folder (images,extensions,skins,maintenances,includes,...) -IMPORTANT :  without / at end
 FileReqDbConf="${FoldReqWiki}/common/config_common.php"	#file where database infos are stored
-shareDbPrefix="fr_"										#database shared in wiki 
+FoldOptGenSiteMap="sitemap"								#folder generated for sitemap files
 
 #Linux Stuff
 linuxWebUsr="www-data:www-data"						#Linux web user
