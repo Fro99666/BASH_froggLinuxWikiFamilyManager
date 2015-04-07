@@ -37,5 +37,9 @@ for lang in ${FoldReqWiki}*;do
 		siteMapGen=$(echo ${FoldOptGenSiteMap}/*.xml)
 		mv $siteMapGen sitemap.xml
 	
+		#add robots.txt
+		if [ ! -e "robots.txt" ];then
+			echo "User-agent: *\nAllow: *" > robots.txt
+		fi
 	fi
 done
