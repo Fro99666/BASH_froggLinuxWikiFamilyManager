@@ -27,10 +27,14 @@ for lang in ${FoldReqWiki}*;do
 		tmpCat=$(cat ${FileReqDbConf})
 		scriptUrl=`echo "$tmpCat" | grep "wgServer" | cut -d \" -f 2`		
 		
+		#Create sitemap folder
 		mkdir -p ${FoldOptGenSiteMap}
+		
+		#generate sitemap
 		php maintenance/generateSitemap.php --fspath ${FoldOptGenSiteMap} --server ${scriptUrl}${scriptPath} --urlpath ${scriptUrl}${scriptPath}/${FoldOptGenSiteMap} --conf LocalSettings.php
 
-		siteMapGen=$(echo ls ${FoldOptGenSiteMap}/*.xml)
+		#move sitemap to sitemal.xml in root folder
+		siteMapGen=$(echo ${FoldOptGenSiteMap}/*.xml)
 		mv $siteMapGen sitemap.xml
 	
 	fi
