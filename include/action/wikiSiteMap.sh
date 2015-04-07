@@ -31,7 +31,7 @@ for lang in ${FoldReqWiki}*;do
 		mkdir -p ${FoldOptGenSiteMap}
 		
 		#generate sitemap
-		php maintenance/generateSitemap.php --fspath ${FoldOptGenSiteMap} --server ${scriptUrl}${scriptPath} --urlpath ${scriptUrl}${scriptPath}/${FoldOptGenSiteMap} --conf LocalSettings.php
+		php maintenance/generateSitemap.php --fspath ${FoldOptGenSiteMap} --server "${scriptUrl}${scriptPath}" --urlpath "${scriptUrl}${scriptPath}/${FoldOptGenSiteMap}" --conf LocalSettings.php
 
 		#move sitemap to sitemal.xml in root folder
 		siteMapGen=$(echo ${FoldOptGenSiteMap}/*.xml)
