@@ -115,7 +115,7 @@ esac
 # ======
 title "Script Results" "1"
 good "...Script process is over...Congratz !"
-if [ ! -z $warnList ];then
+if [[ -n $warnList ]];then
 	warn "some task encounter troubles:${warnList}"
 fi
 
