@@ -39,7 +39,7 @@ for lang in ${FoldReqWiki}*;do
 	
 		#add robots.txt
 		if [ ! -e "robots.txt" ];then
-			echo "User-agent: *\nAllow: *" > robots.txt
+			echo "User-agent: *\nAllow: /" > robots.txt
 		fi
 	fi
 done
