@@ -36,11 +36,17 @@ do
 	esac
 done
 
-#default case update auto (use by me but optionnal)
+#default case update auto (use by me but optional)
 if [ -z $* ];then
 	doWIUP=1
 	doAUTO=1
 fi
+
+#if change pass is chosen, auto-validation can't be set to 1
+if [ $doPASS = 1 ]; then
+ doAUTO=0
+fi
+
 
 #reformat folder vars
 FoldReqCommon=$(addSlashToFold "$FoldReqCommon")

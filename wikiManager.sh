@@ -115,7 +115,7 @@ esac
 # ======
 title "Script Results" "1"
 good "...Script process is over...Congratz !"
-if [ ! $warnList = "" ];then
+if [ ! -z $warnList ];then
 	warn "some task encounter troubles:${warnList}"
 fi
 
@@ -131,5 +131,5 @@ if [ $doWIIN = 1 ];then
 	good "to finish the install display Wikimedia installed web site in your browser"
 	good "once done, modify $FileReqDbConf to add wiki database config and add a link to this file into your LocalSetting.php of each languages installed "
 	good ""
-	good "for more infos got to http://en.wiki.frogg.fr or http://wiki.frogg.fr"
+	good "for more infos got to http://en.wiki.frogg.fr/index.php/Wikimedia or http://wiki.frogg.fr/index.php/Wikimedia"
 fi
