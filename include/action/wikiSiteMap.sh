@@ -45,6 +45,9 @@ for lang in ${FoldReqWiki}*;do
 		if [ ! -e "robots.txt" ];then
 			echo -e "User-agent: *\nAllow: /\n" > robots.txt
 			echo "sitemap: ${scriptUrl}${scriptPath}/sitemap.xml" >> robots.txt
+			#set web user rights
+			chown "$linuxWebUsr" ${FoldOptGenSiteMap} -R
+			chown "$linuxWebUsr" sitemap.xml
 		else
 			warn "${shortLang}/robots.txt not created: already exist"			
 		fi

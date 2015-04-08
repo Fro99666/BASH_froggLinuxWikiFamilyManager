@@ -94,6 +94,9 @@ deny from all
 # PROTECT FOLDER READING
 Options -Indexes
 EOF
+
+			#set web user rights
+			chown "$linuxWebUsr" .htaccess
 		else
 			warn ".htaccess not created: already exist"
 		fi
