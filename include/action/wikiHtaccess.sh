@@ -85,13 +85,13 @@ Header unset Cache-Control
 Header unset ETag
 FileETag none
 
-# protect the htaccess file
+# PROTECT .HTACCESS
 <files .htaccess>
 order allow,deny
 deny from all
 </files>
 
-# protection de la lecture des répertoires
+# PROTECT FOLDER READING
 Options -Indexes
 EOF
 		else
