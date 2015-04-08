@@ -1,11 +1,11 @@
 #ask user for edit script config
-makeachoice "generate Mediawiki site map"
+makeachoice "generate Mediawiki sitemap.xml"
 if [ $? = 0 ]; then
 	warn "exit script, cancelled by user"
 	exit
 fi
 
-title "Create each site map" "1"
+title "Create each sitemap.xml" "1"
 
 # Doing stuff for each lang
 # -------------------------
@@ -45,6 +45,8 @@ for lang in ${FoldReqWiki}*;do
 		if [ ! -e "robots.txt" ];then
 			echo -e "User-agent: *\nAllow: /\n" > robots.txt
 			echo "sitemap: ${scriptUrl}${scriptPath}/sitemap.xml" >> robots.txt
+		else
+			warn "${shortLang}/robots.txt not created: already exist"			
 		fi
 	fi
 done

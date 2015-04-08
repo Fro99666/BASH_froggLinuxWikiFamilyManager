@@ -75,6 +75,7 @@ echo -e "# To Update       : ${SCC} -update (default option, will do a backup be
 echo -e "# To Rollback     : ${SCC} -rollback"
 echo -e "# To Back Up      : ${SCC} -backup"
 echo -e "# To do sitemap   : ${SCC} -sitemap"
+echo -e "# To do htaccess  : ${SCC} -htaccess"
 echo -e "# MySql's Options :"
 echo -e "# MySql update    : ${SCC} -mysqlupdate (will do a backup before)"
 echo -e "# MySql Rollback  : ${SCC} -mysqlrollback"

@@ -101,17 +101,22 @@ $doWIIN)	#Case -install
 . ${act}mysqlUpdate.sh
 . ${act}wikiGit.sh
 . ${act}wikiUpdate.sh
-. ${act}wikiConfig.sh;;
+. ${act}wikiConfig.sh
+. ${act}wikiSiteMap.sh
+. ${act}wikiHtaccess.sh;;
 $doWIUP)	#Case -update
 . ${act}wikiBackup.sh
 . ${act}wikiGit.sh
 . ${act}wikiUpdate.sh
 . ${act}wikiConfig.sh
-. ${act}wikiSiteMap.sh;;
+. ${act}wikiSiteMap.sh
+. ${act}wikiHtaccess.sh;;
 $doPASS)	#Case -changepass
 . ${act}changePass.sh;;
 $doSMAP)	#Case -sitemap
 . ${act}wikiSiteMap.sh;;
+$doWHTA)	#Case -htaccess
+. ${act}wikiHtaccess.sh;;
 esac
 
 # RESULT
