@@ -43,7 +43,8 @@ for lang in ${FoldReqWiki}*;do
 	
 		#add robots.txt
 		if [ ! -e "robots.txt" ];then
-			echo "User-agent: *\nAllow: /" > robots.txt
+			echo "User-agent: *\nAllow: /\n" > robots.txt
+			echo "sitemap: ${scriptUrl}${scriptPath}/sitemap.xml" >> robots.txt
 		fi
 	fi
 done
