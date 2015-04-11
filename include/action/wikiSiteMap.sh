@@ -39,7 +39,7 @@ for lang in ${FoldReqWiki}*;do
 
 		#move sitemap to sitemal.xml in root folder
 		siteMapGen=$(echo ${FoldOptGenSiteMap}/*.xml)
-		mv $siteMapGen sitemap.xml
+		cp $siteMapGen sitemap.xml
 	
 		#add robots.txt
 		if [ ! -e "robots.txt" ];then
