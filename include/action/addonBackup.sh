@@ -73,18 +73,19 @@ for addon in ${addonList[@]};do
 			fi
 		done
 	fi
+	
+	#--Restoring files rights
+	title "Restoring files rights" "3"
 	if [ ! -z ${addonTab[4]} ];then		
-		#--Restoring files rights
-		title "Restoring files rights" "3"
 		#create file array
 		addonRightsTab=(${addonTab[4]//|-_-|/ })
 		# for each file in file list declaration
 		for addonRights in ${addonRightsTab[@]};do
 			chown $linuxWebUsr ${addonTab[0]}/$addonRights -R 
 		done
-		#set web user rights			
-		chown $linuxWebUsr ${addonTab[0]} -R
 	fi
+	#set web user rights			
+	chown $linuxWebUsr ${addonTab[0]} -R
 	
 	#====[ TODO EXTRA SCRIPT LAUNCH ]====#
 	#like for update mysql...
