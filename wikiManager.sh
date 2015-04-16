@@ -85,21 +85,28 @@ cleanDir ${inc}
 # ============
 case 1 in
 $doMYBK)	#Case -mysqlbackup
-. ${act}mysqlBackup.sh;;
+. ${act}mysqlBackup.sh
+;;&
 $doMYUP)	#Case -mysqlupdate
 . ${act}mysqlBackup.sh
-. ${act}mysqlUpdate.sh;;
+. ${act}mysqlUpdate.sh
+;;&
 $doMYRB)	#Case -mysqlrollback
-. ${act}mysqlRollback.sh;;
+. ${act}mysqlRollback.sh
+;;&
 $doADUP)	#Case -addonupdate
-. ${act}addonBackup.sh;;
+. ${act}addonBackup.sh
+;;&
 $doADRB)	#Case -addonrollback
-. ${act}addonRollback.sh;;
+. ${act}addonRollback.sh
+;;&
 $doWIBK)	#Case -backup
-. ${act}wikiBackup.sh;;
+. ${act}wikiBackup.sh
+;;&
 $doWIRB)	#Case -rollback
 . ${act}wikiRollback.sh
-. ${act}wikiConfig.sh;;
+. ${act}wikiConfig.sh
+;;&
 $doWIIN)	#Case -install
 . ${act}wikiInfo.sh
 . ${act}mysqlUpdate.sh
@@ -107,20 +114,25 @@ $doWIIN)	#Case -install
 . ${act}wikiUpdate.sh
 . ${act}wikiConfig.sh
 . ${act}wikiSiteMap.sh
-. ${act}wikiHtaccess.sh;;
+. ${act}wikiHtaccess.sh
+;;&
 $doWIUP)	#Case -update
 . ${act}wikiBackup.sh
 . ${act}wikiGit.sh
 . ${act}wikiUpdate.sh
 . ${act}wikiConfig.sh
 . ${act}wikiSiteMap.sh
-. ${act}wikiHtaccess.sh;;
+. ${act}wikiHtaccess.sh
+;;&
 $doPASS)	#Case -changepass
-. ${act}changePass.sh;;
+. ${act}changePass.sh
+;;&
 $doSMAP)	#Case -sitemap
-. ${act}wikiSiteMap.sh;;
+. ${act}wikiSiteMap.sh
+;;&
 $doWHTA)	#Case -htaccess
-. ${act}wikiHtaccess.sh;;
+. ${act}wikiHtaccess.sh
+;;
 esac
 
 # RESULT
