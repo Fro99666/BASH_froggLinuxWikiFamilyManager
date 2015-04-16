@@ -18,7 +18,7 @@ fi
 }
 
 #check if backup folder already exist, and ask user to make a choice
-#checkBackUp {backUpFolder}
+#checkBackUp {backUpFolder} {DoNotStopScript}
 checkBackUp()
 {
 #check if update already made same day
@@ -26,8 +26,12 @@ exist "d" "${1}"
 if [ $? = 1 ];then
 	makeachoice "override the update already made today, backup file will be overwritten"
 	if [ $? = 0 ];then
-		warn "Script aborted by user"
-		exit 1
+		if [ -z $2 ];then
+			warn "Script aborted by user"
+			exit 1
+		else
+			echo 1 
+		fi
 	fi
 fi
 #create the backup folder if not exist

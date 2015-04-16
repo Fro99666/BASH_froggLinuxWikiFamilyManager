@@ -46,8 +46,8 @@ if [ $doMYUP = 1 -o $doWIBK = 1 -o $doWIUP = 1 -o $doPASS = 1 ];then
 		#get database infos
 		getWikiMysqlInfo ${FileReqDbConf}
 		#then test database type
-		if [ ! $msqlType = "mysql" ];then
-			err "mediawiki database is ${msqlType} and this script require mysql database";((errFound++))		
+		if [ ! $msqlWikiType = "mysql" ];then
+			err "mediawiki database is ${msqlWikiType} and this script require mysql database";((errFound++))		
 		fi
 		#mysql wiki database infos
 		msqlWikiDb=$msqlDb			#wiki database name
@@ -79,6 +79,9 @@ echo -e "# To do htaccess  : ${SCC} -htaccess"
 echo -e "# MySql's Options :"
 echo -e "# MySql update    : ${SCC} -mysqlupdate (will do a backup before)"
 echo -e "# MySql Rollback  : ${SCC} -mysqlrollback"
+echo -e "# Addon's Options :"
+echo -e "# Addon update    : ${SCC} -addonupdate (will do a backup before)"
+echo -e "# Addon Rollback  : ${SCC} -addonrollback"
 echo -e "# Linux Options   :"
 echo -e "# Change Passwords: ${SCC} -changepass"
 if [ $errFound -gt 0 ]; then

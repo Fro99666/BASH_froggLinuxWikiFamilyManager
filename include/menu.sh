@@ -21,28 +21,33 @@ doWHTA=0 #do Wiki htaccess
 doMYUP=0 #do MysqlUpdate only
 doMYRB=0 #do MysqlRollBack only
 doPASS=0 #do Change Pass only
+doADUP=0 #do addon update
+doADRB=0 #do addon roll back
 doAUTO=0 #do auto confirm
 for params in $*
 do
 	IFS=: val=($params)
 	case ${val[0]} in
-		"-install")doWIIN=1;break;;
-		"-update")doWIUP=1;break;;
-		"-rollback")doWIRB=1;break;;
-		"-backup")doWIBK=1;break;;
-		"-mysqlupdate")doMYUP=1;break;;
-		"-mysqlbackup")doMYBK=1;break;;
-		"-mysqlrollback")doMYRB=1;break;;
-		"-changepass")doPASS=1;break;;
-		"-sitemap")doSMAP=1;break;;
-		"-htaccess")doWHTA=1;break;;		
-		"-confirm")doAUTO=1;break;;
+		"-install")			doWIIN=1;break;;
+		"-update")			doWIUP=1;break;;
+		"-rollback")		doWIRB=1;break;;
+		"-backup")			doWIBK=1;break;;
+		"-mysqlupdate")		doMYUP=1;break;;
+		"-mysqlbackup")		doMYBK=1;break;;
+		"-mysqlrollback")	doMYRB=1;break;;
+		"-changepass")		doPASS=1;break;;
+		"-sitemap")			doSMAP=1;break;;
+		"-htaccess")		doWHTA=1;break;;
+		"-addonupdate")		doADUP=1;break;;
+		"-addonrollback")	doADRB=1;break;;
+		"-confirm")			doAUTO=1;break;;
 	esac
 done
 
-#default case update auto (use by me but optional)
+#default case update auto (use by me but optional can be removed to not be auto-started)
 if [ -z $* ];then
 	doWIUP=1
+	doADUP=1
 	doAUTO=1
 fi
 

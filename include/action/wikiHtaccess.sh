@@ -99,6 +99,7 @@ EOF
 			chown "$linuxWebUsr" .htaccess
 		else
 			warn ".htaccess not created: already exist"
+			warnList="${warnList}\n- ${lang}/.htaccess not created: already exist"
 		fi
 	fi
 done

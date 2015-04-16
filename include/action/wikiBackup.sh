@@ -13,7 +13,7 @@ autoBackUp "${FoldReqWiki}" "${CurrFoldWikiBK}"
 # --------------------
 title "Backup Database" "2"
 mkdir -p "${CurrFoldWikiBK}/"
-mysqldump -u ${msqlUser} -p${msqlPass} ${msqlWikiDb} > "${CurrFoldWikiBK}${msqlWikiDb}.sql"
+mysqldump -u ${msqlWikiUser} -p${msqlWikiPass} ${msqlWikiDb} > "${CurrFoldWikiBK}${msqlWikiDb}.sql"
 good "wiki database backuped to ${CurrFoldWikiBK}${msqlWikiDb}.sql"
 
 

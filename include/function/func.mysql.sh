@@ -8,19 +8,23 @@ echo $(mysql -u${3} -p${4} -e "SET PASSWORD FOR '$1'@'localhost' = PASSWORD('$2'
 getWikiMysqlInfo()
 {
 tmpCat=$(cat ${1})
-msqlType=`echo "$tmpCat" | grep "wgDBtype" | cut -d \" -f 2`
-msqlDb=`echo "$tmpCat" | grep "wgDBname" | cut -d \" -f 2`
-msqlUser=`echo "$tmpCat" | grep "wgDBuser" | cut -d \" -f 2`
-msqlPass=`echo "$tmpCat" | grep "wgDBpassword" | cut -d \" -f 2`
+msqlWikiType=`echo "$tmpCat" | grep "wgDBtype" | cut -d \" -f 2`
+msqlWikiDb=`echo "$tmpCat" | grep "wgDBname" | cut -d \" -f 2`
+msqlWikiUser=`echo "$tmpCat" | grep "wgDBuser" | cut -d \" -f 2`
+msqlWikiPass=`echo "$tmpCat" | grep "wgDBpassword" | cut -d \" -f 2`
 tmpCat=""
 }
+msqlType
+msqlDb
+msqlUser
+msqlPass
 
 getMysqlWikiUserName()
 {
 #get wiki web folder
 tmpCat=$(cat ${FileReqDbConf})
 shareDbPrefix=`echo "$tmpCat" | grep "shareDbPrefix" | cut -d \" -f 2`
-cmdRes=$(mysql -u$msqlUser -p$msqlPass -e "SELECT user_name FROM ${msqlDb}.${shareDbPrefix}user where user_id=1;")
+cmdRes=$(mysql -u$msqlWikiUser -p$msqlWikiPass -e "SELECT user_name FROM ${msqlWikiDb}.${shareDbPrefix}user where user_id=1;")
 echo ${cmdRes//user_name} | tr -d '\n'
 }
 

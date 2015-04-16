@@ -80,9 +80,6 @@ cleanGitFiles()
 for gitFile in ${FileGitDel[*]};do
 	if rm -R ${1}/${gitFile}  &> /dev/null;then
 		good "${1}/${gitFile} removed"
-	else
-		err "${1}/${gitFile} not removed"
-		warnList="${warnList}\n- ${1}/${gitFile} not removed"
 	fi
 done
 }

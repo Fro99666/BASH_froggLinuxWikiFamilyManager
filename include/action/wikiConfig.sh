@@ -5,7 +5,7 @@ title "Checking server configuration" "1"
 title "Folder Rights" "2"
 # set the right to Linux web user
 chown "$linuxWebUsr" ${FoldReqWiki} -R
-[ -f ${FoldReqWiki}${msqlDb}.sql ] && rm ${FoldReqWiki}${msqlDb}.sql
+[ -f ${FoldReqWiki}${msqlWikiDb}.sql ] && rm ${FoldReqWiki}${msqlWikiDb}.sql
 #Prevent > Warning: Your default directory for uploads /opt/wiki/{...}/images/ is vulnerable to arbitrary scripts execution.
 mkdir -p ${FoldReqCommon}/images/
 chmod 750 ${FoldReqCommon}/images/* -R

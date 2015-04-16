@@ -47,7 +47,7 @@ if [ $? = 1 ]; then
 	read -p " [ Q ] Type new password for user [$msqlWikiDbUsr]: " newpass
 	makeachoice "change [$msqlWikiDbUsr] password for [$newpass]"
 	if [ $? = 1 ]; then
-		if changeMysqlUserPass ${msqlWikiDbUsr} $newpass $msqlUser $msqlPass; then
+		if changeMysqlUserPass ${msqlWikiDbUsr} $newpass $msqlWikiUser $msqlWikiPass; then
 			sed -i -e "/\$wgDBpassword / s/ .*/ = \"$newpass\";/" 	$FileReqDbConf
 			good " [ A ] [$msqlWikiDbUsr] new pass is [$newpass]"
 		else
