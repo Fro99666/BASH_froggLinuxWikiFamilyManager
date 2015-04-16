@@ -1,9 +1,9 @@
 #VarName Format (used for test.sh)
-#FoldReq... 		requiered folder
+#FoldReq... 		required folder
 #FoldOpt...			optional folder
-#FileReq... 		requiered file
+#FileReq... 		required file
 #FileOpt...			optional file
-#urlReq... 			requiered url
+#urlReq... 			required url
 #urlOpt...			optional url
 
 #===MYSQL: used only for mysqlupdate/mysqlbackup/mysqlrollback case
@@ -44,7 +44,7 @@ FoldOptGenSiteMap="sitemap"								#folder generated for sitemap files
 linuxWebUsr="www-data:www-data"						#Linux web user
 requires=("curl" "git" "php" "mysql") 				#list of required stuff installed
 
-#===ADDON: optionnal used to manage exta web site if they are installed
+#===ADDON: optional used to manage exta web site if they are installed
 declare -a addonList
 #addons List
 addonList[0]="/opt/web/log|@_@|PimpMyLog|@_@|https://github.com/potsky/PimpMyLog.git|@_@|config.user.php|^_^|config.auth.user.php|^_^|robots.txt|@_@||@_@|"

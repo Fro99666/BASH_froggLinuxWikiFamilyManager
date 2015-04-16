@@ -17,7 +17,7 @@ if [ $doMYUP = 1 -o $doWIBK = 1 -o $doWIUP = 1 -o $doPASS = 1 ];then
 	for chr in ${allCheck[*]};do
 		for typ in ${allType[*]};do
 			#get required var list
-			#allTest=$(compgen -v | grep "${chr}${typ}") #<dont works ??
+			#allTest=$(compgen -v | grep "${chr}${typ}") #<don't works ??
 			#allTest=${!FoldReq*} #<not dynamic
 			eval "allTest=\${!${chr}${typ}*}"
 			allTest=($allTest)
@@ -47,7 +47,7 @@ if [ $doMYUP = 1 -o $doWIBK = 1 -o $doWIUP = 1 -o $doPASS = 1 ];then
 		getWikiMysqlInfo ${FileReqDbConf}
 		#then test database type
 		if [ ! $msqlWikiType = "mysql" ];then
-			err "mediawiki database is ${msqlWikiType} and this script require mysql database";((errFound++))		
+			err "Mediawiki database is ${msqlWikiType} and this script require Mysql database";((errFound++))		
 		fi
 		#mysql wiki database infos
 		msqlWikiDb=$msqlDb			#wiki database name
@@ -55,7 +55,7 @@ if [ $doMYUP = 1 -o $doWIBK = 1 -o $doWIUP = 1 -o $doPASS = 1 ];then
 		msqlWikiDbPss=$msqlPass		#wiki database pass
 	else
 		if [ $doWIBK = 1 ];then
-			err "mediawiki database file infos ${FileReqDbConf} not found";((errFound++))
+			err "Mediawiki database file infos ${FileReqDbConf} not found";((errFound++))
 		fi
 	fi
 fi
@@ -72,16 +72,16 @@ echo -e "# To auto confirm : ${SCC} -confirm"
 echo -e "# Wiki's Options  :"
 echo -e "# To Install      : ${SCC} -install"
 echo -e "# To Update       : ${SCC} -update (default option, will do a backup before)"
-echo -e "# To Rollback     : ${SCC} -rollback"
+echo -e "# To Roll-back    : ${SCC} -rollback"
 echo -e "# To Back Up      : ${SCC} -backup"
 echo -e "# To do sitemap   : ${SCC} -sitemap"
 echo -e "# To do htaccess  : ${SCC} -htaccess"
 echo -e "# MySql's Options :"
 echo -e "# MySql update    : ${SCC} -mysqlupdate (will do a backup before)"
-echo -e "# MySql Rollback  : ${SCC} -mysqlrollback"
+echo -e "# MySql Roll-back : ${SCC} -mysqlrollback"
 echo -e "# Addon's Options :"
 echo -e "# Addon update    : ${SCC} -addonupdate (will do a backup before)"
-echo -e "# Addon Rollback  : ${SCC} -addonrollback"
+echo -e "# Addon Roll-back : ${SCC} -addonrollback"
 echo -e "# Linux Options   :"
 echo -e "# Change Passwords: ${SCC} -changepass"
 if [ $errFound -gt 0 ]; then

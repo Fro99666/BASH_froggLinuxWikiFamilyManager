@@ -13,7 +13,7 @@ if [ $? = 1 ];then
 	#display result
 	good "$1 backuped to $2"
 else
-	err "unable to autobackup $1 : not found"
+	err "unable to auto-backup $1 : not found"
 fi
 }
 
@@ -63,7 +63,7 @@ while true; do
 done
 
 #do the restore
-makeachoice "rollback $bk...current files & data will be overwritten /!\ "
+makeachoice "roll-back $bk...current files & data will be overwritten /!\ "
 if [ $? = 0 ];then
 	warn "Script aborted by user"
 	exit 1

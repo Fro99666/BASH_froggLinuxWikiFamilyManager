@@ -1,4 +1,4 @@
-#mysqlupdate
+#Wiki update
 newaction "start the prod wiki update (files & database)" "Install/Update all wikiez files & database"
 
 # update maintenance folder

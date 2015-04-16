@@ -1,5 +1,5 @@
 #mysqlrollback
-newaction "rollback an older version...current files & data will be overwritten /!\ " "rollback MySQL & phpMyAdmin"
+newaction "roll-back an older version...current files & data will be overwritten /!\ " "roll-back MySQL & phpMyAdmin"
 
 #read backup folder and list available backups (set $bk)
 rollBackSelection ${FoldMySqlBK}

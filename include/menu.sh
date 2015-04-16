@@ -21,8 +21,8 @@ doWHTA=0 #do Wiki htaccess
 doMYUP=0 #do MysqlUpdate only
 doMYRB=0 #do MysqlRollBack only
 doPASS=0 #do Change Pass only
-doADUP=0 #do addon update
-doADRB=0 #do addon roll back
+doADUP=0 #do add-on update
+doADRB=0 #do add-on roll back
 doAUTO=0 #do auto confirm
 for params in $*
 do

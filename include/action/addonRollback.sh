@@ -1,7 +1,7 @@
 #If the add-on list is defined !
 if [ -n $addonList ];then
 
-	#addon rollback
+	#add-on roll-back
 	newaction "roll-back add-ons to an older version...current files & data will be overwritten /!\ " "roll-back add-on data & files"
 
 	# for each add-on in add-on list declaration

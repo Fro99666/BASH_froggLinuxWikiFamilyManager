@@ -1,5 +1,5 @@
-#mysqlbackup
-newaction "start the prod wiki backup (files & database)" "Backup wikiez files & database"
+#Wiki backup
+newaction "start the prod Wiki backup (files & database)" "Backup Wikiez files & database"
 
 #check if backup already exist
 checkBackUp ${CurrFoldWikiBK}

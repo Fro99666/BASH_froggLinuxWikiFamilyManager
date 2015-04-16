@@ -1,5 +1,5 @@
 #mysqlrollback
-newaction "rollback an older version...current files & data will be overwritten /!\ " "rollback wiki data & files"
+newaction "roll-back an older version...current files & data will be overwritten /!\ " "roll-back Wiki data & files"
 
 #read backup folder and list available backups (set $bk)
 rollBackSelection ${FoldWikiBK}
