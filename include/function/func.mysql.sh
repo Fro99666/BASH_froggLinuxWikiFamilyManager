@@ -14,10 +14,6 @@ msqlWikiUser=`echo "$tmpCat" | grep "wgDBuser" | cut -d \" -f 2`
 msqlWikiPass=`echo "$tmpCat" | grep "wgDBpassword" | cut -d \" -f 2`
 tmpCat=""
 }
-msqlType
-msqlDb
-msqlUser
-msqlPass
 
 getMysqlWikiUserName()
 {
