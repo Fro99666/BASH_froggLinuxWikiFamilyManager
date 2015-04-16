@@ -14,9 +14,10 @@ for addon in ${addonList[@]};do
 	#Create the folder if not exist
 	mkdir -p ${addonTab[0]}
 	
-	#====[ STEP ONE BACKUP ]====#
 	#--do new user action
-	title "backup ${adName}" "2"
+	title "Doing ${adName} backup/Git update/Files update/Restore configuration" "2"
+	
+	#====[ STEP ONE BACKUP ]====#
 	#--BackUp Add-on file
 	title "backup ${addonTab[0]} files" "3"
 	#check if backup already exist & if user want to overwrite
@@ -32,8 +33,6 @@ for addon in ${addonList[@]};do
 	fi
 	
 	#====[ UPDATE GIT FILES ]====#
-	#--do new user action
-	title "Update GIT" "2"
 	#--Update git files
 	title "Update ${addonTab[1]} GIT files" "3"	
 	#update git 
@@ -51,23 +50,19 @@ for addon in ${addonList[@]};do
 	fi
 	
 	#====[ COPY UPDATED FILES ]====#
-	#--do new user action
-	title "Copy ${adName} files" "2"
 	#--copy files
-	title "Copy updated files" "3"
+	title "Copy ${adName} updated files" "3"
 	cp -r ${FoldReqGit}/${addonTab[1]}/. ${addonTab[0]}
 	#--clean git files
 	title "Clean git files" "3"
 	cleanGitFiles "${addonTab[0]}"
 		
 	#====[ RESOTRE CONFIG & RIGHTS ]====#
-	#--do new user action
-	title "Restoring configuration files & rights" "2"
-	if [ ! ${addonTab[3]}="" ];then
+	if [ ! -z ${addonTab[3]} ];then
 		#--Restoring configuration files
 		title "Restoring configuration files" "3"	
 		#create file array
-		addonFileTab=(${addonTab[3]//|^_^|/ })
+		addonFileTab=(${addonTab[3]//|-_-|/ })
 		# for each file in file list declaration
 		for addonFile in ${addonFileTab[@]};do
 			if [ -f ${addonBkFolder}/${DATE}/${adName}/$addonFile ];then
@@ -77,10 +72,12 @@ for addon in ${addonList[@]};do
 				cp -R ${addonBkFolder}/${DATE}/${adName}/$addonFile/. ${addonTab[0]}/$addonFile/
 			fi
 		done
+	fi
+	if [ ! -z ${addonTab[4]} ];then		
 		#--Restoring files rights
 		title "Restoring files rights" "3"
 		#create file array
-		addonRightsTab=(${addonTab[4]//|^_^|/ })
+		addonRightsTab=(${addonTab[4]//|-_-|/ })
 		# for each file in file list declaration
 		for addonRights in ${addonRightsTab[@]};do
 			chown $linuxWebUsr ${addonTab[0]}/$addonRights -R 
