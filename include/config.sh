@@ -28,7 +28,7 @@ FoldOptMyAdmin="/opt/web/phpmyadmin"				#[*]phpMyAdmin main folder only for inst
 
 #wiki git stuff
 FoldOptWikiGit="/opt/git/wiki.git"					#official git of mediawiki
-FileGitDel=(".jscsrc" ".jshintignore" ".jshintrc" ".git" ".gitattributes" ".gitignore" ".rubocop.yml" ".travis.yml" "Gemfile.lock" "Gemfile" "composer.json" "composer.lock" "composer.phar" "README" "README.mediawiki" "serialized" "docs" "FAQ" "AUTHORS" "CHANGELOG" "HISTORY" "UPGRADE" "INSTALL" "COPYING" "CREDITS" "LICENSE" ".rubocop_todo.yml" "INSTALL.md" "README.md" "DEVELOPERS.md" "LICENSE.txt" "pkg_builder" "tests" "gruntfile.js" "licence.txt" "humans.txt")
+FileGitDel=(".jscsrc" ".jshintignore" ".jshintrc" ".git" ".gitattributes" ".gitignore" ".rubocop.yml" ".travis.yml" "Gemfile.lock" "Gemfile" "composer.lock" "composer.phar" "README" "README.mediawiki" "serialized" "docs" "FAQ" "AUTHORS" "CHANGELOG" "HISTORY" "UPGRADE" "INSTALL" "COPYING" "CREDITS" "LICENSE" ".rubocop_todo.yml" "INSTALL.md" "README.md" "DEVELOPERS.md" "LICENSE.txt" "jsduck.json" "pkg_builder" "tests" "Gruntfile.js" "licence.txt" "humans.txt" "package.json ")
 													#list of git project files (or folders) to remove from prods wikiz
 #Git Repositories Stuff
 UrlReqWikiGit="https://gerrit.wikimedia.org/r/p/mediawiki/core.git"		#mediawiki git files

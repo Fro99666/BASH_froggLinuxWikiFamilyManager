@@ -13,6 +13,7 @@ cp -r  "${FoldOptWikiGit}/resources/" ${FoldReqCommon}
 
 title "Update common files" "1"
 cp "${FoldOptWikiGit}/autoload.php" ${FoldReqCommon}
+cp "${FoldOptWikiGit}/composer.json" ${FoldReqCommon}
 cp "${FoldOptWikiGit}/composer.lock" ${FoldReqCommon}
 
 # update extensions & Skins

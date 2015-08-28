@@ -6,21 +6,26 @@ for commonFold in ${1}*;do
 	if [ ! "${1}${2}" = $commonFold ];then
 		title "$commonFold" "3"
 		cd $commonFold
-		#clean uncommitted file/folder
-		git clean -fd
-		#try to pull
-		if git pull &> /dev/null;then
-			good "$commonFold updated" 
-		else
-			#if can't pull, force to remove local changes
-			git fetch --all
-			git reset --hard origin/master
+		#if is a git
+		if [ -d ".git" ];then 
+			#clean uncommitted file/folder
+			git clean -fd
+			#try to pull
 			if git pull &> /dev/null;then
 				good "$commonFold updated" 
 			else
-				err "error occurred while pulling $commonFold"
-				warnList="${warnList}\n- cannot update $commonFold"
+				#if can't pull, force to remove local changes
+				git fetch --all
+				git reset --hard origin/master
+				if git pull &> /dev/null;then
+					good "$commonFold updated" 
+				else
+					err "error occurred while pulling $commonFold"
+					warnList="${warnList}\n- cannot update $commonFold"
+				fi
 			fi
+		else
+			good "$commonFold skipped : not a git repository" 
 		fi
 	fi
 done
