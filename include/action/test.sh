@@ -49,10 +49,6 @@ if [ $doMYUP = 1 -o $doWIBK = 1 -o $doWIUP = 1 -o $doPASS = 1 ];then
 		if [ ! $msqlWikiType = "mysql" ];then
 			err "Mediawiki database is ${msqlWikiType} and this script require Mysql database";((errFound++))		
 		fi
-		#mysql wiki database infos
-		msqlWikiDb=$msqlDb			#wiki database name
-		msqlWikiDbUsr=$msqlUser		#wiki database user name
-		msqlWikiDbPss=$msqlPass		#wiki database pass
 	else
 		if [ $doWIBK = 1 ];then
 			err "Mediawiki database file infos ${FileReqDbConf} not found";((errFound++))
@@ -71,7 +67,7 @@ echo -e "# Script's Options  :"
 echo -e "# To auto confirm : ${SCC} -confirm"
 echo -e "# Wiki's Options  :"
 echo -e "# To Install      : ${SCC} -install"
-echo -e "# To Update       : ${SCC} -update (default option, will do a backup before)"
+echo -e "# To Update       : ${SCC} -update (will do a backup before)"
 echo -e "# To Roll-back    : ${SCC} -rollback"
 echo -e "# To Back Up      : ${SCC} -backup"
 echo -e "# To do sitemap   : ${SCC} -sitemap"

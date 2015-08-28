@@ -18,13 +18,13 @@ SCD="Install/Update/BackUp/RollBack WikiFamily project"
                                # script description
 SCT="Debian"                   # script OS Test
 SCC="bash $0"		           # script call
-SCV="0.106"                    # script version
+SCV="0.107"                    # script version
 SCO="2014/11/18"               # script date creation
-SCU="2015/04/16"               # script last modification
+SCU="2015/08/28"               # script last modification
 SCA="Frogg"                    # script author
 SCM="admin@frogg.fr"           # script author Mail
 SCP=$PWD                       # script path
-SCY="2015"                     # script copyrigth year
+SCY="2014-2015"                # script copyrigth year
 # ############################ #
 
 # TODO [1] : Compress Backup
