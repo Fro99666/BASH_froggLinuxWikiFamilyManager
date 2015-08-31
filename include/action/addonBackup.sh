@@ -9,6 +9,14 @@ for addon in ${addonList[@]};do
 
 	#get add-on full info
 	addonTab=(${addon//|@_@|/:})
+	
+	#Array size
+	nbArr=${#addonTab[@]}
+	if [ $nbArr = 1 ];then
+		#if array can't split : then try with space, i can't explain why it works randomly ... 
+		addonTab=(${addon//|@_@|/ })
+	fi
+	
 	#get folder name from full path
 	adName=${addonTab[0]##*/}
 	#Create the folder if not exist
