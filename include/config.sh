@@ -47,14 +47,14 @@ requires=("curl" "git" "php" "mysql") 				#list of required stuff installed
 #===ADDON: optional used to manage exta web site if they are installed
 declare -a addonList
 #addons List
-addonList[0]="/opt/web/log|@_@|PimpMyLog|@_@|https://github.com/potsky/PimpMyLog.git|@_@|config.user.php|-_-|config.auth.user.php|-_-|robots.txt|@_@||@_@|"
-addonList[1]="/opt/web/info|@_@|linfo|@_@|https://github.com/jrgp/linfo.git|@_@|robots.txt|@_@||@_@||@_@|"
-addonList[2]="/opt/web/project|@_@|Collabtive|@_@|https://github.com/philippK-de/Collabtive.git|@_@|config/standard/config.php|-_-|robots.txt|-_-|files|@_@|files|@_@|collabtive"
-addonList[3]="/opt/web/git|@_@|gitlist|@_@|https://github.com/klaussilveira/gitlist.git|@_@|config.ini|-_-|robots.txt|@_@||@_@|"
+addonList[0]="/opt/web/log|@_@|PimpMyLog|@_@|github.com/potsky/PimpMyLog.git|@_@|config.user.php|-_-|config.auth.user.php|-_-|robots.txt|@_@||@_@|"
+addonList[1]="/opt/web/info|@_@|linfo|@_@|github.com/jrgp/linfo.git|@_@|robots.txt|@_@||@_@||@_@|"
+addonList[2]="/opt/web/project|@_@|Collabtive|@_@|github.com/philippK-de/Collabtive.git|@_@|config/standard/config.php|-_-|robots.txt|-_-|files|@_@|files|@_@|collabtive"
+addonList[3]="/opt/web/git|@_@|gitlist|@_@|github.com/klaussilveira/gitlist.git|@_@|config.ini|-_-|robots.txt|@_@||@_@|"
 #addons BackUp Folder
 addonBkFolder=${FoldReqBackup}/addon/
 
-#each are separate by |@_@| to FakeArray
+#each are separate by |@_@| to FakeArray (string can't contain : who is used as array separator)
 #0 web path
 #1 git path
 #2 remote master git url

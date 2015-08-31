@@ -8,7 +8,7 @@ mkdir -p $addonBkFolder
 for addon in ${addonList[@]};do
 
 	#get add-on full info
-	addonTab=(${addon//|@_@|/ })
+	addonTab=(${addon//|@_@|/:})
 	#get folder name from full path
 	adName=${addonTab[0]##*/}
 	#Create the folder if not exist
