@@ -6,29 +6,52 @@ newaction "start the prod wiki update (files & database)" "Install/Update all wi
 #Add temp page while updating
 addMaintenancePage()
 {
-echo "<center>Frogg Media Wiki is under maintenance,<br>the web site is being updated,<br>please check again later ...</center>" > $1\${apacheFirstPage}
-if [ ! $2 = "false" ];then
-	title "adding maintenance page ${1}\${apacheFirstPage}" "1"
-	mv $1\.htacess $1\.htaccess.old
+cp ${fil}/${maintenanceFile} ${1}/${maintenanceFile}
+if [ -z ${2} ];then
+	title "adding maintenance page ${1}/${maintenanceFile}" "2"
+	#move .htaccess if exist
+	if [ -f ${1}/${htaFile} ];then
+		mv ${1}/${htaFile} ${1}/${htaFile}.old
+	fi
 fi
+createTmpHtaccess "${1}"
 }
+
+#create a tmp redirect htaccess
+createTmpHtaccess()
+{
+echo "#Redirect trafic to maintenance page" > ${1}/${htaFile}
+echo "RewriteEngine on" >> ${1}/${htaFile}
+echo "RewriteCond %{REQUEST_URI} !/${maintenanceFile}$ [NC]" >> ${1}/${htaFile}
+echo "RewriteRule .* ./${maintenanceFile} [R=302,L]" >> ${1}/${htaFile}
+echo "#Remove Cache" >> ${1}/${htaFile}
+echo "Header set Cache-Control \"max-age=0, no-cache, no-store, must-revalidate\"" >> ${1}/${htaFile}
+echo "Header set Pragma \"no-cache\"" >> ${1}/${htaFile}
+echo "Header set Expires \"Wed, 11 Jan 1984 05:00:00 GMT\"" >> ${1}/${htaFile}
+}
+
 #remove temp page after updating
 removeMaintenancePage()
 {
-title "removing maintenance page ${1}\${apacheFirstPage}" "1"
-rm $1\${apacheFirstPage}
-mv $1\.htacess.old $1\.htaccess
+title "removing maintenance page ${1}/${maintenanceFile}" "2"
+rm ${1}/${maintenanceFile}
+#restore .htaccess if exist else remove temp .htaccess
+if [ -f ${1}/${htaFile}.old ];then
+	mv ${1}/${htaFile}.old ${1}/${htaFile}
+else
+	rm ${1}/${htaFile}
+fi
 }
 
 # set maintenance page
 # --------------------
-for lang in ${FoldReqWiki}*;do
+for lang in ${FoldReqWiki}/*;do
 	addMaintenancePage "${lang}"
 done
 
 # update maintenance folder
 # -------------------------
-title "Update maintenance,includes,languages,vendor folders" "1"
+title "Update maintenance,includes,languages,vendor folders" "2"
 cp -r  "${FoldOptWikiGit}/maintenance/" ${FoldReqCommon}
 cp -r  "${FoldOptWikiGit}/includes/" ${FoldReqCommon}
 cp -r  "${FoldOptWikiGit}/languages/" ${FoldReqCommon}
@@ -36,7 +59,7 @@ cp -r  "${FoldOptWikiGit}/vendor/" ${FoldReqCommon}
 cp -r  "${FoldOptWikiGit}/mw-config/" ${FoldReqCommon}
 cp -r  "${FoldOptWikiGit}/resources/" ${FoldReqCommon} 
 
-title "Update common files" "1"
+title "Update common files" "2"
 cp "${FoldOptWikiGit}/autoload.php" ${FoldReqCommon}
 cp "${FoldOptWikiGit}/composer.json" ${FoldReqCommon}
 cp "${FoldOptWikiGit}/composer.lock" ${FoldReqCommon}
@@ -47,13 +70,13 @@ if [ $doWIUP = 1 ];then
 	#Only for update case !
 	makeachoice "update skins & extensions (optional)"
 	if [ $? = 1 ];then
-		title "Update Skins & Extensions" "1"
+		title "Update Skins & Extensions" "2"
 		# update extensions
-		title "Update Extensions" "2"
+		title "Update Extensions" "3"
 		updateGitFolders "${FoldReqCommon}extensions/"
 		doAllComposer "${FoldReqCommon}extensions/"
 		# update Skins
-		title "Update Skins" "2"
+		title "Update Skins" "3"
 		updateGitFolders "${FoldReqCommon}skins/"
 	fi
 fi
@@ -118,5 +141,5 @@ done
 # remove maintenance page
 # -----------------------
 for lang in ${FoldReqWiki}*;do
-	removeMaintenancePage ${lang}
+	removeMaintenancePage "${lang}"
 done

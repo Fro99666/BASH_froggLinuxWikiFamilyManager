@@ -28,17 +28,17 @@ for lang in ${FoldReqWiki}*;do
 		scriptUrl=`echo "$tmpCat" | grep "wgServer" | cut -d \" -f 2`		
 		
 		#Create sitemap folder
-		mkdir -p ${FoldOptGenSiteMap}
+		mkdir -p ${siteMapFile}
 		
 		#generate sitemap
 		php maintenance/generateSitemap.php \
-			--fspath ${FoldOptGenSiteMap} \
+			--fspath ${siteMapFile} \
 			--server "${scriptUrl}" \
-			--urlpath "${scriptUrl}${scriptPath}/${FoldOptGenSiteMap}" \
+			--urlpath "${scriptUrl}${scriptPath}/${siteMapFile}" \
 			--conf LocalSettings.php
 
 		#move sitemap to sitemal.xml in root folder
-		siteMapGen=$(echo ${FoldOptGenSiteMap}/*.xml)
+		siteMapGen=$(echo ${siteMapFile}/*.xml)
 		cp $siteMapGen sitemap.xml
 	
 		#add robots.txt
@@ -46,7 +46,7 @@ for lang in ${FoldReqWiki}*;do
 			echo -e "User-agent: *\nAllow: /\n" > robots.txt
 			echo "sitemap: ${scriptUrl}${scriptPath}/sitemap.xml" >> robots.txt
 			#set web user rights
-			chown "$linuxWebUsr" ${FoldOptGenSiteMap} -R
+			chown "$linuxWebUsr" ${siteMapFile} -R
 			chown "$linuxWebUsr" sitemap.xml
 		else
 			warn "${shortLang}/robots.txt not created: already exist"			

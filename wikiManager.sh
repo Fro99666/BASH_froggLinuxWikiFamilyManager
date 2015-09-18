@@ -18,16 +18,15 @@ SCD="Install/Update/BackUp/RollBack WikiFamily project"
                                # script description
 SCT="Debian"                   # script OS Test
 SCC="bash $0"		           # script call
-SCV="0.107"                    # script version
+SCV="0.108"                    # script version
 SCO="2014/11/18"               # script date creation
-SCU="2015/08/28"               # script last modification
+SCU="2015/09/18"               # script last modification
 SCA="Frogg"                    # script author
 SCM="admin@frogg.fr"           # script author Mail
 SCP=$PWD                       # script path
-SCY="2014-2015"                # script copyrigth year
+SCY="2014-2015"                # script copyright year
 # ############################ #
 
-# TODO [1] : Compress Backup
 # TODO [1] : Save phpmyadmin config
 
 #Script Includes
@@ -35,6 +34,7 @@ SCY="2014-2015"                # script copyrigth year
 inc="${SCP}/include/"
 fnc="${inc}function/"
 act="${inc}action/"
+fil="${inc}file/"
 
 #Include file Cleaning
 #---------------------
@@ -139,7 +139,7 @@ esac
 # RESULT
 # ======
 title "Script Results" "1"
-good "...Script process is over...Congratz !"
+good "...Script process is over...Congratulation !"
 if [[ -n $warnList ]];then
 	warn "some task encounter troubles:${warnList}"
 fi
@@ -154,7 +154,7 @@ if [ $doWIIN = 1 ];then
 	good "ln -s /var/www/{lang} {pathToWikiLang}"
 	good ""
 	good "to finish the install display Wikimedia installed web site in your browser"
-	good "once done, modify $FileReqDbConf to add Wiki database config and add a link to this file into your LocalSetting.php of each languages installed "
+	good "once done, modify $FileReqDbConf to add Wiki database configuration and add a link to this file into your LocalSetting.php of each languages installed "
 	good ""
 	good "for more infos got to http://en.wiki.frogg.fr/index.php/Wikimedia or http://wiki.frogg.fr/index.php/Wikimedia"
 fi

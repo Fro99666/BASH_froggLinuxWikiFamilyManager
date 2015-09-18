@@ -38,12 +38,13 @@ UrlReqMyAdminGit="https://github.com/phpmyadmin/phpmyadmin.git"			#phpmyadmin gi
 #wiki stuff
 FoldReqCommon="${FoldReqWiki}/common"					#wiki folder with common stuff in main folder (images,extensions,skins,maintenances,includes,...) -IMPORTANT :  without / at end
 FileReqDbConf="${FoldReqWiki}/common/config_common.php"	#file where database infos are stored
-FoldOptGenSiteMap="sitemap"								#folder generated for sitemap files
+SiteMapFile="sitemap"									#folder generated for sitemap files
+maintenanceFile="maintenance.htm"					#default page use to display maintenance while updating
 
 #Linux Stuff
 linuxWebUsr="www-data:www-data"						#Linux web user
 requires=("curl" "git" "php" "mysql") 				#list of required stuff installed
-apacheFirstPage="index.htm"							#default page use to display maintenance while updating
+htaFile=".htaccess"									#htaccess file
 
 #===ADDON: optional used to manage exta web site if they are installed
 declare -a addonList
