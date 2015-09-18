@@ -26,9 +26,10 @@ if [ $doWIUP = 1 ];then
 		# update extensions
 		title "Update Extensions" "2"
 		updateGitFolders "${FoldReqCommon}extensions/"
+		doAllComposer "${FoldReqCommon}extensions/"
 		# update Skins
 		title "Update Skins" "2"
-		updateGitFolders "${FoldReqCommon}skins/" "common"
+		updateGitFolders "${FoldReqCommon}skins/"
 	fi
 fi
 
