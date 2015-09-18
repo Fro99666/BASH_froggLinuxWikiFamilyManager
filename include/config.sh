@@ -43,6 +43,7 @@ FoldOptGenSiteMap="sitemap"								#folder generated for sitemap files
 #Linux Stuff
 linuxWebUsr="www-data:www-data"						#Linux web user
 requires=("curl" "git" "php" "mysql") 				#list of required stuff installed
+apacheFirstPage="index.htm"							#default page use to display maintenance while updating
 
 #===ADDON: optional used to manage exta web site if they are installed
 declare -a addonList

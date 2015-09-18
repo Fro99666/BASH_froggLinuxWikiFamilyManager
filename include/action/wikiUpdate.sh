@@ -1,6 +1,10 @@
 #Wiki update
 newaction "start the prod wiki update (files & database)" "Install/Update all wikiez files & database"
 
+
+# set maintenance page
+# --------------------
+
 # update maintenance folder
 # -------------------------
 title "Update maintenance,includes,languages,vendor folders" "1"
@@ -37,7 +41,7 @@ fi
 # -------------------------
 for lang in ${FoldReqWiki}*;do
 
-	if [ ! "${lang}/" = $FoldReqCommon -a -d $lang ];then
+	if [ ! "${lang}/" = $FoldReqCommon -a -d ${lang} ];then
 
 		#just the folder name
 		shortLang=${lang##*/}
@@ -47,8 +51,12 @@ for lang in ${FoldReqWiki}*;do
 		# create each wikiz
 		# -----------------
 		title "Copying files for ${shortLang}" "3"
-		rm -r $lang
-		mkdir $lang
+		rm -r ${lang}
+		mkdir ${lang}
+		
+		#Add temp page while updating
+		echo "Web Site under maintenance, please check again later ..." > ${lang}\${apacheFirstPage}
+		
 		cp -r ${FoldOptWikiGit}. ${lang}
 		good "Last official mediawiki files has been copied to ${lang}"
 		#clean git files
@@ -68,7 +76,7 @@ for lang in ${FoldReqWiki}*;do
 		# -----------------------
 		title "Link to common" "3"
 		for comFold in ${FoldReqCommon}*;do
-			if [ -d $comFold ];then
+			if [ -d ${comFold} ];then
 				rm -r "${lang}/${FoldReqCommon##*/}${comFold##*/}"
 				ln -s "${comFold}" "${lang}/${FoldReqCommon##*/}${comFold##*/}"
 				good "${comFold} folder has been linked to ${lang}/${FoldReqCommon##*/}${comFold##*/}"
@@ -76,7 +84,7 @@ for lang in ${FoldReqWiki}*;do
 		done
 
 		#Only for update case !
-		if [ $doWIUP = 1 ];then	
+		if [ ${doWIUP} = 1 ];then	
 			# update database
 			# ---------------
 			title "Database update" "3"
@@ -84,5 +92,8 @@ for lang in ${FoldReqWiki}*;do
 			good "${lang} database has been updated"
 		fi
 	fi
+	
+	#remove maintenance page
+	rm ${lang}\${apacheFirstPage}
 	
 done
