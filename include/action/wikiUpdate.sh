@@ -8,7 +8,7 @@ addMaintenancePage()
 {
 cp ${fil}/${maintenanceFile} ${1}/${maintenanceFile}
 if [ -z ${2} ];then
-	title "adding maintenance page ${1}/${maintenanceFile}" "2"
+	title "adding maintenance page ${1}/${maintenanceFile}" "3"
 	#move .htaccess if exist
 	if [ -f ${1}/${htaFile} ];then
 		mv ${1}/${htaFile} ${1}/${htaFile}.old
@@ -33,7 +33,7 @@ echo "Header set Expires \"Wed, 11 Jan 1984 05:00:00 GMT\"" >> ${1}/${htaFile}
 #remove temp page after updating
 removeMaintenancePage()
 {
-title "removing maintenance page ${1}/${maintenanceFile}" "2"
+title "removing maintenance page ${1}/${maintenanceFile}" "3"
 rm ${1}/${maintenanceFile}
 #restore .htaccess if exist else remove temp .htaccess
 if [ -f ${1}/${htaFile}.old ];then
@@ -45,6 +45,7 @@ fi
 
 # set maintenance page
 # --------------------
+title "adding maintenance page" "2"
 for lang in ${FoldReqWiki}/*;do
 	addMaintenancePage "${lang}"
 done
@@ -140,6 +141,7 @@ done
 
 # remove maintenance page
 # -----------------------
+title "removing maintenance page" "2"
 for lang in ${FoldReqWiki}*;do
 	removeMaintenancePage "${lang}"
 done
