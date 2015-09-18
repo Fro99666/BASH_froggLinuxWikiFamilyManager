@@ -1,17 +1,29 @@
 #Wiki update
 newaction "start the prod wiki update (files & database)" "Install/Update all wikiez files & database"
 
+# Extra maintenance func
+# ----------------------
 #Add temp page while updating
 addMaintenancePage()
 {
-echo "<center>Frogg Media Wiki is under maintenance,<br>the web site is being updated,<br>please check again later ...</center>" > $1
+echo "<center>Frogg Media Wiki is under maintenance,<br>the web site is being updated,<br>please check again later ...</center>" > $1\${apacheFirstPage}
+if [ ! $2 = "false" ];then
+	title "adding maintenance page ${1}\${apacheFirstPage}" "1"
+	mv $1\.htacess $1\.htaccess.old
+fi
+}
+#remove temp page after updating
+removeMaintenancePage()
+{
+title "removing maintenance page ${1}\${apacheFirstPage}" "1"
+rm $1\${apacheFirstPage}
+mv $1\.htacess.old $1\.htaccess
 }
 
 # set maintenance page
 # --------------------
 for lang in ${FoldReqWiki}*;do
-	title "adding maintenance page ${lang}\${apacheFirstPage}" "1"
-	addMaintenancePage ${lang}\${apacheFirstPage}
+	addMaintenancePage "${lang}"
 done
 
 # update maintenance folder
@@ -63,7 +75,7 @@ for lang in ${FoldReqWiki}*;do
 		rm -r ${lang}
 		mkdir ${lang}
 		#Add temp page while updating (removed from rm -r previously)
-		addMaintenancePage ${lang}\${apacheFirstPage}
+		addMaintenancePage "${lang}" "false"
 		
 		cp -r ${FoldOptWikiGit}. ${lang}
 		good "Last official mediawiki files has been copied to ${lang}"
@@ -106,6 +118,5 @@ done
 # remove maintenance page
 # -----------------------
 for lang in ${FoldReqWiki}*;do
-	title "removing maintenance page ${lang}\${apacheFirstPage}" "1"
-	rm ${lang}\${apacheFirstPage}
+	removeMaintenancePage ${lang}
 done
