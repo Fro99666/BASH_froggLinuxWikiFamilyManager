@@ -48,14 +48,7 @@ for addon in ${addonList[@]};do
 	#--choose a version in git
 	chooseGitVersion ${FoldReqGit}/${addonTab[1]}
 	#--Install dependencies
-	cd ${FoldReqGit}/${addonTab[1]}
-	if [ -f composer.json ];then
-		title "Install dependencies" "3"
-		#installing composer files
-		curl -sS "$UrlReqComposer"| php		
-		php composer.phar install
-		php composer.phar update
-	fi
+	doComposer ${FoldReqGit}/${addonTab[1]}
 	
 	#====[ COPY UPDATED FILES ]====#
 	#--copy files
