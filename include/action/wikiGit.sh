@@ -6,13 +6,12 @@ newaction "update mediawiki GIT in ${FoldOptWikiGit}" "Update/Install mediawiki 
 title "Get or Update GIT" "2"
 updateGit "${FoldOptWikiGit}" "${UrlReqWikiGit}"
 
+#choose a version in git
+chooseGitVersion ${FoldOptWikiGit}
+
 # Install dependencies
 # ---------------------
 title "Install dependencies" "2"
-cd $FoldOptWikiGit
-curl -sS "$UrlReqComposer"| php
-php composer.phar install
-php composer.phar update
+doComposer $FoldOptWikiGit
 
-#choose a version in git
-chooseGitVersion ${FoldOptWikiGit}
+

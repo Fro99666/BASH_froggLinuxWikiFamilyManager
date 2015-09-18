@@ -74,6 +74,7 @@ cleanDir ${inc}
 . ${fnc}com.sh
 . ${fnc}func.backup.sh
 . ${fnc}func.git.sh
+. ${fnc}func.composer.sh
 . ${fnc}func.mysql.sh
 . ${fnc}func.php.sh
 #Menu
