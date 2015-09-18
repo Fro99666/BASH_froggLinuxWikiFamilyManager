@@ -1,9 +1,18 @@
 #Wiki update
 newaction "start the prod wiki update (files & database)" "Install/Update all wikiez files & database"
 
+#Add temp page while updating
+addMaintenancePage()
+{
+echo "<center>Frogg Media Wiki is under maintenance,<br>the web site is being updated,<br>please check again later ...</center>" > $1
+}
 
 # set maintenance page
 # --------------------
+for lang in ${FoldReqWiki}*;do
+	title "adding maintenance page ${lang}\${apacheFirstPage}" "1"
+	addMaintenancePage ${lang}\${apacheFirstPage}
+done
 
 # update maintenance folder
 # -------------------------
@@ -53,9 +62,8 @@ for lang in ${FoldReqWiki}*;do
 		title "Copying files for ${shortLang}" "3"
 		rm -r ${lang}
 		mkdir ${lang}
-		
-		#Add temp page while updating
-		echo "Web Site under maintenance, please check again later ..." > ${lang}\${apacheFirstPage}
+		#Add temp page while updating (removed from rm -r previously)
+		addMaintenancePage ${lang}\${apacheFirstPage}
 		
 		cp -r ${FoldOptWikiGit}. ${lang}
 		good "Last official mediawiki files has been copied to ${lang}"
@@ -93,7 +101,11 @@ for lang in ${FoldReqWiki}*;do
 		fi
 	fi
 	
-	#remove maintenance page
+done
+
+# remove maintenance page
+# -----------------------
+for lang in ${FoldReqWiki}*;do
+	title "removing maintenance page ${lang}\${apacheFirstPage}" "1"
 	rm ${lang}\${apacheFirstPage}
-	
 done
