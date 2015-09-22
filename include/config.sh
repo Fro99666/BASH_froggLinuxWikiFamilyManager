@@ -20,6 +20,9 @@ FoldConfPiwik="/opt/web/piwik/config/config.ini.php"
 
 #===WIKIMEDIA: used for install/update/rollback/backup
 
+#web name
+wikiUrl="wiki.frogg.fr"								#wiki domaine name
+
 #main App
 FoldReqWiki="/opt/web/wiki"							#Wiki main folder
 FoldReqGit="/opt/git"								#git main folder
