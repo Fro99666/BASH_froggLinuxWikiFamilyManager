@@ -20,9 +20,6 @@ FoldConfPiwik="/opt/web/piwik/config/config.ini.php"
 
 #===WIKIMEDIA: used for install/update/rollback/backup
 
-#web name
-wikiUrl="wiki.frogg.fr"								#wiki domaine name
-
 #main App
 FoldReqWiki="/opt/web/wiki"							#Wiki main folder
 FoldReqGit="/opt/git"								#git main folder
@@ -42,7 +39,7 @@ UrlReqMyAdminGit="https://github.com/phpmyadmin/phpmyadmin.git"			#phpmyadmin gi
 FoldReqCommon="${FoldReqWiki}/common"					#wiki folder with common stuff in main folder (images,extensions,skins,maintenances,includes,...) -IMPORTANT :  without / at end
 FileReqDbConf="${FoldReqWiki}/common/config_common.php"	#file where database infos are stored
 siteMapFile="sitemap"									#folder generated for sitemap files
-maintenanceFile="maintenance.htm"					#default page use to display maintenance while updating
+maintenanceFile="/errors/maintenance.htm"				#default page use to display maintenance while updating
 
 #Linux Stuff
 linuxWebUsr="www-data:www-data"						#Linux web user
