@@ -37,13 +37,15 @@ echo "Header set Expires \"Sat, 02 Aug 1980 15:15:00 GMT\"" >> ${1}/${htaFile}
 #remove temp page after updating
 removeMaintenancePage()
 {
-title "removing maintenance page ${1}/${maintenanceFile}" "3"
-rm ${1}/${maintenanceFile}
-restore .htaccess if exist else remove temp .htaccess
+title "removing maintenance page for ${1}" "3"
+#rm ${1}/${maintenanceFile}
+#restore .htaccess if exist else remove temp .htaccess
 if [ -f ${1}/${htaFile}.old ];then
 	mv ${1}/${htaFile}.old ${1}/${htaFile}
 else
-	rm ${1}/${htaFile}
+	if [ -f ${1}/${htaFile} ];then
+		rm ${1}/${htaFile}
+	fi
 fi
 }
 
