@@ -107,7 +107,7 @@ for lang in ${FoldReqWiki}*;do
 		rm -r ${lang}
 		mkdir ${lang}
 		#Add temp page while updating (removed from rm -r previously)
-		#addMaintenancePage "${lang}" "false"
+		createTmpHtaccess "${lang}"
 		
 		cp -r ${FoldOptWikiGit}. ${lang}
 		good "Last official mediawiki files has been copied to ${lang}"
