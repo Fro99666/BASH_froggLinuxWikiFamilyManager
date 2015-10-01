@@ -35,17 +35,17 @@ echo "Header set Expires \"Sat, 02 Aug 1980 15:15:00 GMT\"" >> ${1}/${htaFile}
 #}
 
 #remove temp page after updating
-#removeMaintenancePage()
-#{
-#title "removing maintenance page ${1}/${maintenanceFile}" "3"
-#rm ${1}/${maintenanceFile}
-#restore .htaccess if exist else remove temp .htaccess
-#if [ -f ${1}/${htaFile}.old ];then
-#	mv ${1}/${htaFile}.old ${1}/${htaFile}
-#else
-#	rm ${1}/${htaFile}
-#fi
-#}
+removeMaintenancePage()
+{
+title "removing maintenance page ${1}/${maintenanceFile}" "3"
+rm ${1}/${maintenanceFile}
+restore .htaccess if exist else remove temp .htaccess
+if [ -f ${1}/${htaFile}.old ];then
+	mv ${1}/${htaFile}.old ${1}/${htaFile}
+else
+	rm ${1}/${htaFile}
+fi
+}
 
 # set maintenance page
 # --------------------
@@ -105,7 +105,7 @@ for lang in ${FoldReqWiki}*;do
 		rm -r ${lang}
 		mkdir ${lang}
 		#Add temp page while updating (removed from rm -r previously)
-		addMaintenancePage "${lang}" "false"
+		#addMaintenancePage "${lang}" "false"
 		
 		cp -r ${FoldOptWikiGit}. ${lang}
 		good "Last official mediawiki files has been copied to ${lang}"
