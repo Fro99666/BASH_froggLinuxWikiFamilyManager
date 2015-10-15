@@ -13,12 +13,14 @@ for commonFold in ${1}*;do
 			#try to pull
 			if git pull &> /dev/null;then
 				good "$commonFold updated" 
+				git submodule update --init
 			else
 				#if can't pull, force to remove local changes
 				git fetch --all
 				git reset --hard origin/master
 				if git pull &> /dev/null;then
 					good "$commonFold updated" 
+					git submodule update --init
 				else
 					err "error occurred while pulling $commonFold"
 					warnList="${warnList}\n- cannot update $commonFold"
@@ -44,6 +46,7 @@ else
 	cd ${1}
 	git checkout master
 	git pull
+	git submodule update --init
 fi
 }
 
