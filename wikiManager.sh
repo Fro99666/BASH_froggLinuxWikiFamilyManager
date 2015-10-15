@@ -18,9 +18,9 @@ SCD="Install/Update/BackUp/RollBack WikiFamily project"
                                # script description
 SCT="Debian"                   # script OS Test
 SCC="bash $0"		           # script call
-SCV="0.108"                    # script version
+SCV="0.109"                    # script version
 SCO="2014/11/18"               # script date creation
-SCU="2015/09/18"               # script last modification
+SCU="2015/10/15"               # script last modification
 SCA="Frogg"                    # script author
 SCM="admin@frogg.fr"           # script author Mail
 SCP=$PWD                       # script path
