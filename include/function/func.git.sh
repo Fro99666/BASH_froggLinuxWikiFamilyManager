@@ -14,7 +14,7 @@ for commonFold in ${1}*;do
 			if git pull &> /dev/null;then
 				good "$commonFold updated" 
 				if [ ! -z $3 ];then
-					updateGitModule() $commonFold
+					updateGitModule $commonFold
 				fi
 			else
 				#if can't pull, force to remove local changes
@@ -23,7 +23,7 @@ for commonFold in ${1}*;do
 				if git pull &> /dev/null;then
 					good "$commonFold updated" 
 					if [ ! -z $3 ];then
-						updateGitModule() $commonFold
+						updateGitModule $commonFold
 					fi
 				else
 					err "error occurred while pulling $commonFold"
@@ -50,8 +50,8 @@ else
 	cd ${1}
 	git checkout master
 	git pull
-	if [ ! -z $3 ]then;
-		updateGitModule() ${1}
+	if [ ! -z $3 ];then
+		updateGitModule ${1}
 	fi
 fi
 }
