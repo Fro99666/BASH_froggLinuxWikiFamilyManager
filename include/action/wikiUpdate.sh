@@ -82,11 +82,11 @@ if [ $doWIUP = 1 ];then
 		title "Update Skins & Extensions" "2"
 		# update extensions
 		title "Update Extensions" "3"
-		updateGitFolders "${FoldReqCommon}extensions/"
+		updateGitFolders "${FoldReqCommon}extensions/" "" "true"
 		doAllComposer "${FoldReqCommon}extensions/"
 		# update Skins
 		title "Update Skins" "3"
-		updateGitFolders "${FoldReqCommon}skins/"
+		updateGitFolders "${FoldReqCommon}skins/" "" "true"
 	fi
 fi
 
@@ -109,7 +109,12 @@ for lang in ${FoldReqWiki}*;do
 		#Add temp page while updating (removed from rm -r previously)
 		createTmpHtaccess "${lang}"
 		
+		#Copy git wiki files
 		cp -r ${FoldOptWikiGit}. ${lang}
+		
+		#Update Git Module
+		updateGitModule() ${lang}
+		
 		good "Last official mediawiki files has been copied to ${lang}"
 		#clean git files
 		cleanGitFiles "${lang}"

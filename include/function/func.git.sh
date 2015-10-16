@@ -1,4 +1,4 @@
-#updateGitFolders {mainFolder} {excludeFolder}
+#updateGitFolders {mainFolder} {excludeFolder} {doSubmodule}
 updateGitFolders()
 {
 for commonFold in ${1}*;do
@@ -13,14 +13,14 @@ for commonFold in ${1}*;do
 			#try to pull
 			if git pull &> /dev/null;then
 				good "$commonFold updated" 
-				git submodule update --init
+				[ ! -z $3 ]&&updateGitModule()
 			else
 				#if can't pull, force to remove local changes
 				git fetch --all
 				git reset --hard origin/master
 				if git pull &> /dev/null;then
 					good "$commonFold updated" 
-					git submodule update --init
+					[ ! -z $3 ]&&updateGitModule()
 				else
 					err "error occurred while pulling $commonFold"
 					warnList="${warnList}\n- cannot update $commonFold"
@@ -34,7 +34,7 @@ done
 }
 
 #install or update git
-#updateGit {destinationFolder} {repoUrl}
+#updateGit {destinationFolder} {repoUrl} {doSubModule}
 updateGit()
 {
 exist "d" "${1}/.git"
@@ -43,10 +43,22 @@ if [ $? = 0 ];then
 	git clone "${2}" "${1}"
 else	
 	check "Updating git repository"
+	commonFold=${1}
 	cd ${1}
 	git checkout master
 	git pull
-	git submodule update --init
+	[ ! -z $3 ]&&updateGitModule()
+fi
+}
+
+#update git submodules
+updateGitModule()
+{
+if git submodule update --init &> /dev/null;then
+	good "$commonFold submodule updated" 
+else
+	err "error occurred while pulling $commonFold"
+	warnList="${warnList}\n- cannot update $commonFold submodule"
 fi
 }
 
