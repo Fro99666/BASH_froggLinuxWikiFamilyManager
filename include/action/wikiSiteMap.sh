@@ -29,6 +29,7 @@ for lang in ${FoldReqWiki}*;do
 		#get wiki web url
 		scriptUrl=${scriptUrl/http:\/\//}
 		scriptUrl=${scriptUrl/https:\/\//}
+		scriptUrl=`echo ${scriptUrl}| tr -d '\n'`
 		
 		#Create sitemap folder
 		mkdir -p ${siteMapFile}
