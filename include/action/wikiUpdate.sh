@@ -113,7 +113,7 @@ for lang in ${FoldReqWiki}*;do
 		cp -r ${FoldOptWikiGit}. ${lang}
 		
 		#Update Git Module
-		updateGitModule() ${lang}
+		updateGitModule ${lang}
 		
 		good "Last official mediawiki files has been copied to ${lang}"
 		#clean git files

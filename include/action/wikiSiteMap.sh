@@ -49,7 +49,8 @@ for lang in ${FoldReqWiki}*;do
 			chown "$linuxWebUsr" ${siteMapFile} -R
 			chown "$linuxWebUsr" sitemap.xml
 		else
-			warn "${shortLang}/robots.txt not created: already exist"			
+			warn "${shortLang}/robots.txt not created: already exist"
+			warnList="${warnList}\n- ${shortLang}/robots.txt not created: already exist"
 		fi
 	fi
 done
