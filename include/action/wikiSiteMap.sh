@@ -26,6 +26,9 @@ for lang in ${FoldReqWiki}*;do
 		#get wiki web url
 		tmpCat=$(cat ${FileReqDbConf})
 		scriptUrl=`echo "$tmpCat" | grep "wgServer" | cut -d \" -f 2`		
+		#get wiki web url
+		scriptUrl=${scriptUrl/http:\/\//}
+		scriptUrl=${scriptUrl/https:\/\//}
 		
 		#Create sitemap folder
 		mkdir -p ${siteMapFile}
