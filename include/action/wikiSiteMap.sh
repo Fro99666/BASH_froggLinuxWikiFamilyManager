@@ -24,7 +24,7 @@ for lang in ${FoldReqWiki}*;do
 		scriptPath=`echo "$tmpCat" | grep "wgScriptPath" | cut -d \" -f 2`
 		
 		#get wiki web url
-		tmpCat=$(cat ${FileReqDbConf})
+		#tmpCat=$(cat ${FileReqDbConf})
 		scriptUrl=`echo "$tmpCat" | grep "wgServer" | cut -d \" -f 2`		
 		#get wiki web url
 		scriptUrl=${scriptUrl/http:\/\//}
