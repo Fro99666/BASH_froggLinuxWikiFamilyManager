@@ -8,7 +8,7 @@ createTmpHtaccess()
 {
 echo "#Redirect trafic to maintenance page" > ${1}/${htaFile}
 echo "RewriteEngine on" >> ${1}/${htaFile}
-echo "RewriteCond %{REQUEST_URI} !/${maintenanceFile}$ [NC]" >> ${1}/${htaFile}
+echo "RewriteCond %{REQUEST_URI} !${maintenanceFile}$ [NC]" >> ${1}/${htaFile}
 echo "RewriteRule \".*\" \"${maintenanceFile}\" [R=302,L]" >> ${1}/${htaFile}
 #RewriteRule "(.*\/wiki)\/.*" "$1/maintenance.htm" [R=302,L] <<apache 2.4 won't let this work ?
 #OR
