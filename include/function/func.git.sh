@@ -13,14 +13,18 @@ for commonFold in ${1}*;do
 			#try to pull
 			if git pull &> /dev/null;then
 				good "$commonFold updated" 
-				[ ! -z $3 ]&&updateGitModule()
+				if [ ! -z $3 ];then
+					updateGitModule() $commonFold
+				fi
 			else
 				#if can't pull, force to remove local changes
 				git fetch --all
 				git reset --hard origin/master
 				if git pull &> /dev/null;then
 					good "$commonFold updated" 
-					[ ! -z $3 ]&&updateGitModule()
+					if [ ! -z $3 ];then
+						updateGitModule() $commonFold
+					fi
 				else
 					err "error occurred while pulling $commonFold"
 					warnList="${warnList}\n- cannot update $commonFold"
@@ -43,22 +47,25 @@ if [ $? = 0 ];then
 	git clone "${2}" "${1}"
 else	
 	check "Updating git repository"
-	commonFold=${1}
 	cd ${1}
 	git checkout master
 	git pull
-	[ ! -z $3 ]&&updateGitModule()
+	if [ ! -z $3 ]then;
+		updateGitModule() ${1}
+	fi
 fi
 }
 
 #update git submodules
+#updateGitModule {gitFolder}
 updateGitModule()
 {
+cd ${1}
 if git submodule update --init &> /dev/null;then
-	good "$commonFold submodule updated" 
+	good "$1 submodule updated" 
 else
-	err "error occurred while pulling $commonFold"
-	warnList="${warnList}\n- cannot update $commonFold submodule"
+	err "error occurred while pulling $1"
+	warnList="${warnList}\n- cannot update $1 submodule"
 fi
 }
 

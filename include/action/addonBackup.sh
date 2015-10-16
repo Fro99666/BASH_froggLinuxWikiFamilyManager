@@ -54,6 +54,8 @@ for addon in ${addonList[@]};do
 	#--copy files
 	title "Copy ${adName} updated files" "3"
 	cp -r ${FoldReqGit}/${addonTab[1]}/. ${addonTab[0]}
+	#--update submodule files
+	updateGitModule ${addonTab[0]}
 	#--clean git files
 	title "Clean git files" "3"
 	cleanGitFiles "${addonTab[0]}"
