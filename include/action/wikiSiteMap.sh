@@ -27,10 +27,11 @@ for lang in ${FoldReqWiki}*;do
 		#tmpCat=$(cat ${FileReqDbConf})
 		scriptUrl=`echo "$tmpCat" | grep "wgServer" | cut -d \" -f 2`		
 		#get wiki web url
+		scriptUrl=`echo ${scriptUrl}| tr -d '\n'`
+		scriptFullUrl=$scriptUrl
 		scriptUrl=${scriptUrl/http:\/\//}
 		scriptUrl=${scriptUrl/https:\/\//}
-		scriptUrl=`echo ${scriptUrl}| tr -d '\n'`
-		
+
 		#Create sitemap folder
 		mkdir -p ${siteMapFile}
 		
@@ -48,7 +49,7 @@ for lang in ${FoldReqWiki}*;do
 		#add robots.txt
 		if [ ! -e "robots.txt" ];then
 			echo -e "User-agent: *\nAllow: /\n" > robots.txt
-			echo "sitemap: ${scriptUrl}${scriptPath}/sitemap.xml" >> robots.txt
+			echo "sitemap: ${scriptFullUrl}${scriptPath}/sitemap.xml" >> robots.txt
 			#set web user rights
 			chown "$linuxWebUsr" ${siteMapFile} -R
 			chown "$linuxWebUsr" sitemap.xml
