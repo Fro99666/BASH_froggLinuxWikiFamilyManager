@@ -19,33 +19,30 @@ for lang in ${FoldReqWiki}*;do
 		
 		cd $lang
 		
-		#get wiki web folder
-		tmpCat=$(cat LocalSettings.php)
-		scriptPath=`echo "$tmpCat" | grep "wgScriptPath" | cut -d \" -f 2`
-		
-		#get wiki web url
-		#tmpCat=$(cat ${FileReqDbConf})
-		scriptUrl=`echo "$tmpCat" | grep "wgServer" | cut -d \" -f 2`		
-		#get wiki web url
-		scriptUrl=`echo ${scriptUrl}| tr -d '\n'`
-		scriptFullUrl=$scriptUrl
-		scriptUrl=${scriptUrl/http:\/\//}
-		scriptUrl=${scriptUrl/https:\/\//}
+                #get wiki web folder
+                scriptPath=`echo $(cat LocalSettings.php) | grep "wgScriptPath" | cut -d \" -f 2`
 
-		#Create sitemap folder
-		mkdir -p ${siteMapFile}
-		
-		#generate sitemap
-		php maintenance/generateSitemap.php \
-			--fspath ${siteMapFile} \
-			--server "${scriptUrl}" \
-			--urlpath "${scriptUrl}${scriptPath}/${siteMapFile}" \
-			--conf LocalSettings.php
+                #get wiki web url
+                #tmpCat=$(cat ${FileReqDbConf})
+                scriptUrl=`echo $(cat LocalSettings.php) | grep "wgServer" | cut -d \" -f 2`
+                #get wiki web url
+                scriptUrl=`echo ${scriptUrl}| tr -d '\n'`
+                #Fix unexplained : removal
+                scriptUrl=${scriptUrl// /:}
+                #Create sitemap folder
+                mkdir -p ${siteMapFile}
 
-		#move sitemap to sitemal.xml in root folder
-		siteMapGen=$(echo ${siteMapFile}/*.xml)
-		cp $siteMapGen sitemap.xml
-	
+                #generate sitemap
+                php maintenance/generateSitemap.php \
+                        --fspath ${siteMapFile} \
+                        --server "${scriptUrl}" \
+                        --urlpath "${scriptUrl}${scriptPath}/${siteMapFile}" \
+                        --conf LocalSettings.php
+
+                #move sitemap to sitemal.xml in root folder
+                siteMapGen=$(echo ${siteMapFile}/*.xml)
+                mv $siteMapGen sitemap.xml
+
 		#add robots.txt
 		if [ ! -e "robots.txt" ];then
 			echo -e "User-agent: *\nAllow: /\n" > robots.txt
