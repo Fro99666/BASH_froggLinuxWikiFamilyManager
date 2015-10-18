@@ -29,6 +29,8 @@ for lang in ${FoldReqWiki}*;do
                 scriptUrl=`echo ${scriptUrl}| tr -d '\n'`
                 #Fix unexplained : removal
                 scriptUrl=${scriptUrl// /:}
+                #Remove old sitemap
+                rm -r ${siteMapFile}
                 #Create sitemap folder
                 mkdir -p ${siteMapFile}
 
