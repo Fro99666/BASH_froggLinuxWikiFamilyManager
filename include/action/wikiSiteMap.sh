@@ -30,7 +30,7 @@ for lang in ${FoldReqWiki}*;do
                 #Fix unexplained : removal
                 scriptUrl=${scriptUrl// /:}
                 #Remove old sitemap
-                rm -r ${siteMapFile}
+                rm ${siteMapFile}/*
                 #Create sitemap folder
                 mkdir -p ${siteMapFile}
 
