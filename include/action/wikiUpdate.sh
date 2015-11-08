@@ -25,9 +25,7 @@ title "removing maintenance page for ${1}" "3"
 if [ -f ${1}/${htaFile}.old ];then
 	mv ${1}/${htaFile}.old ${1}/${htaFile}
 else
-	if [ -f ${1}/${htaFile} ];then
-		rm ${1}/${htaFile}
-	fi
+	[ -f ${1}/${htaFile} ]&&rm ${1}/${htaFile}
 fi
 }
 
@@ -116,9 +114,10 @@ for lang in ${FoldReqWiki}*;do
 		title "Link to common" "3"
 		for comFold in ${FoldReqCommon}*;do
 			if [ -d ${comFold} ];then
-				rm -r "${lang}/${FoldReqCommon##*/}${comFold##*/}"
-				ln -s "${comFold}" "${lang}/${FoldReqCommon##*/}${comFold##*/}"
-				good "${comFold} folder has been linked to ${lang}/${FoldReqCommon##*/}${comFold##*/}"
+				currComFold=${lang}/${FoldReqCommon##*/}${comFold##*/}
+				[ -d ${comFold} ]&&rm -r "{$currComFold}"
+				ln -s "${comFold}" "{$currComFold}"
+				good "${comFold} folder has been linked to ${currComFold}"
 			fi
 		done
 
