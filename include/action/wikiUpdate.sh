@@ -115,7 +115,7 @@ for lang in ${FoldReqWiki}*;do
 		for comFold in ${FoldReqCommon}*;do
 			if [ -d ${comFold} ];then
 				currComFold=${lang}/${FoldReqCommon##*/}${comFold##*/}
-				[ -d ${$currComFold} ]&&rm -r "${currComFold}"
+				[ -d ${currComFold} ]&&rm -r "${currComFold}"
 				ln -s "${comFold}" "${currComFold}"
 				good "${comFold} folder has been linked to ${currComFold}"
 			fi
