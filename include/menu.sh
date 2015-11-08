@@ -45,7 +45,7 @@ do
 done
 
 #default case update auto (use by me but optional can be removed to not be auto-started)
-if [ -z $* ];then
+if [ -z "${*}" ];then
 	doWIUP=1
 	doADUP=1
 	doAUTO=1
