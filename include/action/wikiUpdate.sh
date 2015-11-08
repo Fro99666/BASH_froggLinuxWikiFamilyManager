@@ -6,33 +6,15 @@ newaction "start the prod wiki update (files & database)" "Install/Update all wi
 #create a tmp redirect htaccess
 createTmpHtaccess()
 {
-echo "#Redirect trafic to maintenance page" > ${1}/${htaFile}
-echo "RewriteEngine on" >> ${1}/${htaFile}
-echo "RewriteCond %{REQUEST_URI} !${maintenanceFile}$ [NC]" >> ${1}/${htaFile}
-echo "RewriteRule \".*\" \"${maintenanceFile}\" [R=302,L]" >> ${1}/${htaFile}
-#RewriteRule "(.*\/wiki)\/.*" "$1/maintenance.htm" [R=302,L] <<apache 2.4 won't let this work ?
-#OR
-#RewriteBase /wiki/
-#RewriteRule ".*" "maintenance.htm" [R=302,L] <<apache 2.4 won't let this work ?
-echo "#Remove Cache" >> ${1}/${htaFile}
-echo "Header set Cache-Control \"max-age=0, no-cache, no-store, must-revalidate\"" >> ${1}/${htaFile}
-echo "Header set Pragma \"no-cache\"" >> ${1}/${htaFile}
-echo "Header set Expires \"Sat, 02 Aug 1980 15:15:00 GMT\"" >> ${1}/${htaFile}
+echo "#Redirect trafic to maintenance page" > "${1}${htaFile}"
+echo "RewriteEngine on" >> "${1}${htaFile}""
+echo "RewriteCond %{REQUEST_URI} !${maintenanceFile}$ [NC]" >> "${1}${htaFile}"
+echo "RewriteRule \".*\" \"${maintenanceFile}\" [R=302,L]" >> "${1}${htaFile}""
+echo "#Remove Cache" >> "${1}${htaFile}""
+echo "Header set Cache-Control \"max-age=0, no-cache, no-store, must-revalidate\"" >> "${1}${htaFile}"
+echo "Header set Pragma \"no-cache\"" >> "${1}${htaFile}"
+echo "Header set Expires \"Sat, 02 Aug 1980 15:15:00 GMT\"" >> "${1}${htaFile}"
 }
-
-#Add temp page while updating
-#addMaintenancePage()
-#{
-#cp ${fil}/${maintenanceFile} ${1}/${maintenanceFile}
-#if [ -z ${2} ];then
-#	title "adding maintenance page ${1}/${maintenanceFile}" "3"
-#	#move .htaccess if exist
-#	if [ -f ${1}/${htaFile} ];then
-#		mv ${1}/${htaFile} ${1}/${htaFile}.old
-#	fi
-#fi
-#createTmpHtaccess "${1}"
-#}
 
 #remove temp page after updating
 removeMaintenancePage()
