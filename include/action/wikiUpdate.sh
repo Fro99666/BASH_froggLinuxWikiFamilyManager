@@ -6,14 +6,14 @@ newaction "start the prod wiki update (files & database)" "Install/Update all wi
 #create a tmp redirect htaccess
 createTmpHtaccess()
 {
-echo "#Redirect trafic to maintenance page" > "${1}${htaFile}"
-echo "RewriteEngine on" >> "${1}${htaFile}""
-echo "RewriteCond %{REQUEST_URI} !${maintenanceFile}$ [NC]" >> "${1}${htaFile}"
-echo "RewriteRule \".*\" \"${maintenanceFile}\" [R=302,L]" >> "${1}${htaFile}""
-echo "#Remove Cache" >> "${1}${htaFile}""
-echo "Header set Cache-Control \"max-age=0, no-cache, no-store, must-revalidate\"" >> "${1}${htaFile}"
-echo "Header set Pragma \"no-cache\"" >> "${1}${htaFile}"
-echo "Header set Expires \"Sat, 02 Aug 1980 15:15:00 GMT\"" >> "${1}${htaFile}"
+echo "#Redirect trafic to maintenance page" > "${1}/${htaFile}"
+echo "RewriteEngine on" >> "${1}/${htaFile}""
+echo "RewriteCond %{REQUEST_URI} !${maintenanceFile}$ [NC]" >> "${1}/${htaFile}"
+echo "RewriteRule \".*\" \"${maintenanceFile}\" [R=302,L]" >> "${1}/${htaFile}""
+echo "#Remove Cache" >> "${1}/${htaFile}""
+echo "Header set Cache-Control \"max-age=0, no-cache, no-store, must-revalidate\"" >> "${1}/${htaFile}"
+echo "Header set Pragma \"no-cache\"" >> "${1}/${htaFile}"
+echo "Header set Expires \"Sat, 02 Aug 1980 15:15:00 GMT\"" >> "${1}/${htaFile}"
 }
 
 #remove temp page after updating
