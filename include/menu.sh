@@ -24,23 +24,24 @@ doPASS=0 #do Change Pass only
 doADUP=0 #do add-on update
 doADRB=0 #do add-on roll back
 doAUTO=0 #do auto confirm
-for params in $*
+
+params=($*)
+for param in ${params[@]}
 do
-	IFS=: val=($params)
-	case ${val[0]} in
-		"-install")			doWIIN=1;break;;
-		"-update")			doWIUP=1;break;;
-		"-rollback")		doWIRB=1;break;;
-		"-backup")			doWIBK=1;break;;
-		"-mysqlupdate")		doMYUP=1;break;;
-		"-mysqlbackup")		doMYBK=1;break;;
-		"-mysqlrollback")	doMYRB=1;break;;
-		"-changepass")		doPASS=1;break;;
-		"-sitemap")			doSMAP=1;break;;
-		"-htaccess")		doWHTA=1;break;;
-		"-addonupdate")		doADUP=1;break;;
-		"-addonrollback")	doADRB=1;break;;
-		"-confirm")			doAUTO=1;break;;
+	case ${param} in
+		"-install")		doWIIN=1;;
+		"-update")		doWIUP=1;;
+		"-rollback")		doWIRB=1;;
+		"-backup")		doWIBK=1;;
+		"-mysqlupdate")		doMYUP=1;;
+		"-mysqlbackup")		doMYBK=1;;
+		"-mysqlrollback")	doMYRB=1;;
+		"-changepass")		doPASS=1;;
+		"-sitemap")		doSMAP=1;;
+		"-htaccess")		doWHTA=1;;
+		"-addonupdate")		doADUP=1;;
+		"-addonrollback")	doADRB=1;;
+		"-confirm")		doAUTO=1;;
 	esac
 done
 
