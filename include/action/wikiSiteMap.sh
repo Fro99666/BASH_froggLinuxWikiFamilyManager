@@ -38,7 +38,7 @@ for lang in ${FoldReqWiki}*;do
                 php maintenance/generateSitemap.php \
                         --fspath ${siteMapFile} \
                         --server "${scriptUrl}" \
-                        --urlpath "${scriptUrl}${scriptPath}/${siteMapFile}" \
+                        --urlpath "${scriptPath}/${siteMapFile}" \
                         --conf LocalSettings.php
 
                 #move sitemap to sitemal.xml in root folder
