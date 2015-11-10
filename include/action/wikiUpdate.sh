@@ -8,8 +8,9 @@ createTmpHtaccess()
 {
 echo "#Redirect trafic to maintenance page" > "${1}/${htaFile}"
 echo "RewriteEngine on" >> "${1}/${htaFile}""
-echo "RewriteCond %{REQUEST_URI} !${maintenanceFile}$ [NC]" >> "${1}/${htaFile}"
-echo "RewriteRule \".*\" \"${maintenanceFile}\" [R=302,L]" >> "${1}/${htaFile}"
+echo "RewriteCond %{ENV:REDIRECT_STATUS} !=503" >> "${1}/${htaFile}"
+echo "RewriteCond %{REQUEST_URI} !/errors/" >> "${1}/${htaFile}"
+echo "RewriteRule .* - [R=503,L]" >> "${1}/${htaFile}"
 echo "#Remove Cache" >> "${1}/${htaFile}""
 echo "Header set Cache-Control \"max-age=0, no-cache, no-store, must-revalidate\"" >> "${1}/${htaFile}"
 echo "Header set Pragma \"no-cache\"" >> "${1}/${htaFile}"
